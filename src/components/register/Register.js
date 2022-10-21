@@ -3,7 +3,6 @@
 // import menu from "./utils/createMenu.js";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 // import axios from "axios";
@@ -14,51 +13,44 @@ import { BASE_URL } from "../../api/Api";
 // const url = BASE_URL + TOKEN_PATH;
 
 const schema = yup.object().shape({
-	email: yup.string().required("Please enter your stud.noroff.no address"),
+	name: yup.string().required("Please enter your username"),
+  email: yup.string().required("Please enter your stud.noroff.no account"),
 	password: yup.string().required("Please enter your password"),
 });
 
-export default function LoginForm() {
+export default function RegisterForm() {
 	const [submit, setSubmitting] = useState(false);
-	const [loginError, setLoginError] = useState(null);
+	const [registerError, setRegisterError] = useState(null);
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
 	});
 
-  const navigate = useNavigate();
-
-async function doLogin(schema, event) {
-  event.preventDefault();
+async function registerUser(schema) {
   const options = {
     method: "POST",
     body: JSON.stringify(schema),
     headers: {
-      'Content-Type': 'application/json',
-      // Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
+      'Content-Type': 'application/json'
     },
   }
 
     setSubmitting(true);
-    setLoginError(null);
+    setRegisterError(null);
 
     try {
-        const response = await fetch(`${BASE_URL}/social/auth/login`, options)
+        const response = await fetch(`${BASE_URL}/social/auth/register`, options)
         const data = await response.json();
-        console.log(data.name, data.accessToken);
-        setLoginError(data.errors[0].message);
+        console.log("response", data);
+        setRegisterError(data.errors[0].message);
 
-        if (data.name) {
-          navigate("/contact");
-        }
-
-        // if (data.user) {
+        // if (json.user) {
 
         //     saveTokenKey(data.jwt);
         //     saveThisUser(data.user);
         // }
       } catch (error) {
-        console.log(error[0]);
+        console.log("error", error);
       } finally {
         setSubmitting(false);
       }
@@ -69,13 +61,21 @@ async function doLogin(schema, event) {
         // }
 
         return (
-          <form onSubmit={handleSubmit(doLogin)}>
-            {loginError && <FormError>{loginError}</FormError>}
+          <form onSubmit={handleSubmit(registerUser)}>
+            {registerError && <FormError>{registerError}</FormError>}
       
             <fieldset disabled={submit}>
-            <input {...register("email")} placeholder="email" required />
+            <input {...register("name")} placeholder="name" required />
             {/* <p>{errors.username.message}</p> */}
             <br />
+
+            <input
+              {...register("email")}
+              placeholder="email"
+              type="email"
+              required
+            />
+            {/* <p>{errors.email.message}</p> */}
       
             <input
               {...register("password")}
@@ -86,7 +86,8 @@ async function doLogin(schema, event) {
             {/* <p>{errors.password.message}</p> */}
             <br />
       
-            <button>{submit ? "Logging in" : "Login"}</button>
+            <button>{submit ? "Registering user" : "Register"}</button>
+            {/* <div>{errors ? <p>{registerError}</p> : "User created"}</div> */}
             </fieldset>
           </form>
         );
