@@ -10,6 +10,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
 
+import { saveThisUser, saveTokenKey } from "../../settings/storage/Storage";
+
 
 // const url = BASE_URL + TOKEN_PATH;
 
@@ -28,8 +30,7 @@ export default function LoginForm() {
 
   const navigate = useNavigate();
 
-async function doLogin(schema, event) {
-  event.preventDefault();
+async function doLogin(schema) {
   const options = {
     method: "POST",
     body: JSON.stringify(schema),
@@ -45,20 +46,17 @@ async function doLogin(schema, event) {
     try {
         const response = await fetch(`${BASE_URL}/social/auth/login`, options)
         const data = await response.json();
-        console.log(data.name, data.accessToken);
-        setLoginError(data.errors[0].message);
+        setLoginError(errors.toString());
+        console.log(data)
 
-        if (data.name) {
-          navigate("/contact");
-        }
+        
+          saveTokenKey(data.accessToken);
+          saveThisUser(data.name);
+          // navigate("/");
+        
 
-        // if (data.user) {
-
-        //     saveTokenKey(data.jwt);
-        //     saveThisUser(data.user);
-        // }
       } catch (error) {
-        console.log(error[0]);
+        console.log("Error:" + error);
       } finally {
         setSubmitting(false);
       }
