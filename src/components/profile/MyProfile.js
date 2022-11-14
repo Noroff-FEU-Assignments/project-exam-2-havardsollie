@@ -5,6 +5,7 @@ import AuthContext from "../../context/AuthContext";
 import { BASE_URL } from "../../api/Api";
 import useAxios from "../../hooks/useAxios";
 import MyProfilePosts from "./MyProfilePosts";
+import UpdateMedia from "./UpdateMedia";
 
 function MyProfile() {
   const [auth] = useContext(AuthContext);
@@ -34,11 +35,15 @@ function MyProfile() {
         <Card>
           <Card.Body>
             {profile.name}
+            {profile.email}
+            <img src={profile.banner} />
+            <img src={profile.avatar} />
           </Card.Body>
         </Card>
         <Card>
           <MyProfilePosts />
         </Card>
+        <UpdateMedia />
       </div>
     </>
   )

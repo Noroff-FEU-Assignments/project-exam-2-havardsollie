@@ -1,0 +1,90 @@
+import { useState, useContext } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+// import axios from "axios";
+import FormError from "../../common/FormError";
+import { BASE_URL } from "../../api/Api";
+import AuthContext from "../../context/AuthContext";
+import Form from 'react-bootstrap/Form';
+
+const schema = yup.object().shape({
+	banner: yup.string(),
+	avatar: yup.string(),
+});
+
+export default function UpdateMedia() {
+  const [auth] = useContext(AuthContext);
+	const [submit, setSubmitting] = useState(false);
+	const [updateError, setUpdateError] = useState(null);
+
+	const { register, handleSubmit, formState: { errors } } = useForm({
+		resolver: yupResolver(schema),
+	});
+
+  const navigate = useNavigate();
+  const { name } = useParams();
+  const url = BASE_URL + "/social/profiles/" + auth.name + "/media";
+
+  async function updateMedia(schema) {
+    const options = {
+      method: "PUT",
+      body: JSON.stringify(schema),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
+      },
+    }
+
+      setSubmitting(true);
+      setUpdateError(null);
+
+      try {
+          const response = await fetch(url, options)
+          const data = await response.json();
+          console.log(data)
+
+        } catch (error) {
+          console.log("Error:" + error);
+        } finally {
+          setSubmitting(false);
+        }
+      }
+
+        // if (json.error) {
+        //     displayMessage("warning", "Invalid login details", ".message-container");
+        // }
+
+        return (
+          <>
+          <Form onSubmit={handleSubmit(updateMedia)} className="updateForm">
+              <fieldset disabled={submit}>
+                <Form.Group className="mb-3" controlId="formGroupEmail">
+                  Banner
+                  <input
+                    {...register("banner")}
+                    placeholder="Image URL"
+                    />
+                  {errors.banner && <FormError>{errors.banner.message}</FormError>}
+                </Form.Group>
+
+                <hr />
+                <Form.Group className="mb-3" controlId="formGroupPassword">
+                  Avatar
+                  <input
+                    {...register("avatar")}
+                    placeholder="Image URL"                    
+                    />
+                  {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
+                </Form.Group>
+                <hr />
+                {updateError && <FormError>{updateError}</FormError>}
+                <button>{submit ? "Updating..." : "Update"}</button>
+              </fieldset>
+            </Form>
+            </>
+        );
+
+}
