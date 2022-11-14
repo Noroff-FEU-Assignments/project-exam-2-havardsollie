@@ -9,10 +9,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 // import axios from "axios";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
-
 import AuthContext from "../../context/AuthContext";
-
+import logo from "../../assets/caffeine_logo.png";
 import Form from 'react-bootstrap/Form';
+import Card from "react-bootstrap/Card";
 
 
 // const url = BASE_URL + TOKEN_PATH;
@@ -56,7 +56,7 @@ export default function LoginForm() {
             return <FormError>{loginError}</FormError>         
           } else {
             setAuth(data);
-            navigate("/feed"); 
+            navigate("/"); 
           }
 
         } catch (error) {
@@ -71,32 +71,32 @@ export default function LoginForm() {
         // }
 
         return (
-          <Form onSubmit={handleSubmit(doLogin)}>
-            {loginError && <FormError>{loginError}</FormError>}
-      
-            <fieldset disabled={submit}>
-            <Form.Group className="mb-3" controlId="formGroupEmail">
-            <input 
-              {...register("email")} 
-              placeholder="email" 
-              required 
-            />
-            {errors.email && <FormError>{errors.email.message}</FormError>}
-            </Form.Group>
-      
-            <Form.Group className="mb-3" controlId="formGroupPassword">
-            <input
-              {...register("password")}
-              placeholder="password"
-              type="password"
-              required
-            />
-            {errors.password && <FormError>{errors.password.message}</FormError>}
-            </Form.Group>
-      
-            <button>{submit ? "Logging in" : "Login"}</button>
-            </fieldset>
-          </Form>
+          <>
+          <Form onSubmit={handleSubmit(doLogin)} className="enterForm">
+              <fieldset disabled={submit}>
+                <Form.Group className="mb-3" controlId="formGroupEmail">
+                  <input
+                    {...register("email")}
+                    placeholder="Email"
+                    required />
+                  {errors.email && <FormError>{errors.email.message}</FormError>}
+                </Form.Group>
+
+                <hr />
+                <Form.Group className="mb-3" controlId="formGroupPassword">
+                  <input
+                    {...register("password")}
+                    placeholder="Password"
+                    type="password"
+                    required />
+                  {errors.password && <FormError>{errors.password.message}</FormError>}
+                </Form.Group>
+                <hr />
+                {loginError && <FormError>{loginError}</FormError>}
+                <button>{submit ? "Logging in" : "Login"}</button>
+              </fieldset>
+            </Form>
+            </>
         );
 
 }

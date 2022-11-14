@@ -1,0 +1,18 @@
+.profileWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profileAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.profileAvatar img {
+  height: auto;
+  width: auto;
+  border-radius: 10px;
+}

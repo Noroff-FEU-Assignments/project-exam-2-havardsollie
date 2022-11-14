@@ -1,0 +1,31 @@
+.feed-wrapper {
+  max-width: 70%;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-left: 5px solid $green-light;
+  &:hover {
+    border-left: 5px solid $green-dark;
+  }
+}
+
+.post-container {
+  padding: 3%;
+  color: black;
+}
+
+.cart-title h5, p {
+  text-decoration: none;
+}
+
+.interactions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.authorLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-decoration: none;
+}

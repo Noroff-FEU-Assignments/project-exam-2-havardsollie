@@ -1,0 +1,181 @@
+#root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #e5e5f7;
+  background-size: 270px 270px;
+  background-image: repeating-linear-gradient(to right, #9AB77C, #9AB77C 1px, #e5e5f7 1px, #e5e5f7);
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #9AB77C;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar button {
+  border: none;
+  background-color: #3E6A3C;
+  color: white;
+  border: #86C286;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo h1 {
+  font-family: "Abril Fatface", cursive;
+  font-size: larger;
+  -webkit-text-decoration: underline 2px #86C286;
+          text-decoration: underline 2px #86C286;
+  padding: 5px;
+}
+
+.navbar-nav a {
+  color: #86C286;
+  padding: 5px;
+}
+
+.navbar-nav a:hover {
+  color: #3E6A3C;
+}
+
+.formPage {
+  height: 90%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.enterForm {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  border: #9AB77C;
+}
+
+.enterForm input {
+  border: none;
+  border-radius: 10px;
+  background: #9AB77C;
+  color: white;
+  font-weight: bolder;
+  width: 90%;
+  padding: 2px;
+}
+
+.enterForm input::-webkit-input-placeholder {
+  color: white;
+}
+
+.enterForm input:-ms-input-placeholder {
+  color: white;
+}
+
+.enterForm input::-ms-input-placeholder {
+  color: white;
+}
+
+.enterForm input::placeholder {
+  color: white;
+}
+
+.enterForm input:focus {
+  background: #9AB77C;
+  color: white;
+}
+
+.enterForm button {
+  border: none;
+  background-color: #3E6A3C;
+  color: white;
+  margin-top: 10%;
+  border: #86C286;
+  border-radius: 50%;
+  border-style: double;
+  padding: 10px;
+}
+
+.enterForm button:hover {
+  background-color: white;
+  color: #3E6A3C;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.mb-3 {
+  border: #9AB77C;
+  color: white;
+}
+
+.form-error {
+  color: red;
+}
+
+.feed-wrapper {
+  max-width: 70%;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-left: 5px solid #9AB77C;
+}
+
+.feed-wrapper:hover {
+  border-left: 5px solid #3E6A3C;
+}
+
+.post-container {
+  padding: 3%;
+  color: black;
+}
+
+.cart-title h5, p {
+  text-decoration: none;
+}
+
+.interactions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.authorLinks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-decoration: none;
+}

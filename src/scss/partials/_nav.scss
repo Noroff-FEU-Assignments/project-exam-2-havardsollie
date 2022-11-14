@@ -1,0 +1,30 @@
+.navbar {
+  background-color: $green-light;
+  align-items: center;
+  & button {
+    border: none;
+    background-color: $green-dark;
+    color: white;
+    border: $green;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  & h1 {
+    font-family: $font-logo;
+    font-size: larger;
+    text-decoration: underline 2px $green;
+    padding: 5px;
+  }
+}
+
+.navbar-nav a {
+  color: $green;
+  padding: 5px;
+  &:hover {
+    color: $green-dark;
+  }
+}
+
