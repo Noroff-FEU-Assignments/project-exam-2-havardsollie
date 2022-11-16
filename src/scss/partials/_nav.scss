@@ -20,11 +20,31 @@
   }
 }
 
-.navbar-nav a {
+.me-auto {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  & a {
+    color: $green;
+    padding: 5px;
+    &:hover {
+      color: $green-dark;
+    }
+  }
+}
+
+.nav-middle {
+  display: flex;
+}
+
+.authorLinks, .comments a {
   color: $green;
-  padding: 5px;
+}
+
+.profileCard a {
+  color: black;
   &:hover {
-    color: $green-dark;
+  color: $green;
   }
 }
 

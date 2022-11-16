@@ -9,8 +9,9 @@ import AuthenticatedNav from "./layout/AuthNav";
 import Navigate from "./layout/Nav";
 import "./scss/style.scss"
 import ProfileDetails from "./components/detail/ProfileDetail";
-import MyProfile from "./components/profile/MyProfile";
-import EditPost from "./components/newPost/EditPost";
+import MyProfile from "./components/profiles/MyProfile";
+import EditPost from "./components/posts/EditPost";
+import ListOfProfiles from "./components/profiles/AllProfiles";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 				<Routes>
           
             <Route path="/" element={<Feed />} />
+						<Route path="/allprofiles" element={<ListOfProfiles />} />
             <Route path="/detail/:id" element={<PostDetails />} />
 						<Route path="/detail/edit/:id" element={<EditPost />} />
             <Route path="/profile" element={<MyProfile />} />

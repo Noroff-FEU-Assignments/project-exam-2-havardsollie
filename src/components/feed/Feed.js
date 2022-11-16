@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { BASE_URL } from "../../api/Api";
 // import Heading from "../layout/Heading";
-import SinglePost from "../singlePost/SinglePost";
+import SinglePost from "../single/SinglePost";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import NewPost from "../newPost/NewPost";
+import NewPost from "../posts/NewPost";
 
 function ListOfPosts() {
 	const [posts, setPosts] = useState([]);
@@ -50,7 +50,7 @@ function ListOfPosts() {
 
 	return (
 		<>
-			{/* <Heading title="Home" />  */}
+      <hr />
       <NewPost />
       <hr />
 			{posts.map((post) => {

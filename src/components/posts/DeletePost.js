@@ -5,6 +5,7 @@ import { BASE_URL } from "../../api/Api";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
+import { Button } from "react-bootstrap";
 
 function DeletePost({id}) {
 	const [post, setPost] = useState(null);
@@ -49,9 +50,9 @@ function DeletePost({id}) {
 	}
 
   return (
-    <button type="button" className="deleteBtn" onClick={deleteThisPost}>
+    <Button variant="outline-secondary" className="newPost" onClick={deleteThisPost}>
       {error ? "Error" : "Delete"}
-    </button>
+    </Button>
    );
   }
   

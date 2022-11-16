@@ -12,8 +12,9 @@ html, body {
 body {
   margin: 0;
   background-color: #e5e5f7;
-  background-size: 270px 270px;
-  background-image:  repeating-linear-gradient(to right, #9AB77C, #9AB77C 1px, #e5e5f7 1px, #e5e5f7);
+  opacity: 0.8;
+  background-image: radial-gradient(#86C286 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
 }
 
 // background-image:  linear-gradient(135deg, #9AB77C 25%, transparent 25%), linear-gradient(225deg, #9AB77C 25%, transparent 25%), linear-gradient(45deg, #9AB77C 25%, transparent 25%), linear-gradient(315deg, #9AB77C 25%, #e5e5f7 25%);

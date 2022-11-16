@@ -1,0 +1,43 @@
+.postWrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+.authorLinks img {
+  border-radius: 50px;
+  background-image: url("../../../assets/circle.png");
+  background-position: center;
+}
+
+.interactions {
+  display: block;
+}
+
+.reactions {
+  display: flex;
+  width: 25%;
+  justify-content: space-around;
+}
+
+.reactSelector {
+  padding: 10px;
+}
+
+.reactionsInner {
+  padding: 10px;
+}
+
+.comments {
+  padding: 1%;
+}
+
+.commentsInner {
+  margin-left: 10px;
+}
+
+.commentSection {
+  padding: 10px;
+  width: 50%;
+  border: 2px solid $green;
+}

@@ -8,6 +8,8 @@ import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
 // import AuthContext from "../../context/AuthContext";
 import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
@@ -19,6 +21,9 @@ export default function NewPost() {
   // const [auth, setAuth] = useContext(AuthContext);
 	const [submit, setSubmitting] = useState(false);
 	const [postError, setPostError] = useState(null);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
@@ -55,6 +60,7 @@ export default function NewPost() {
           console.log("Error:" + error);
         } finally {
           setSubmitting(false);
+          navigate("/"); 
         }
       }
 
@@ -64,8 +70,15 @@ export default function NewPost() {
 
         return (
           <>
-          <h2>New post</h2>
-          <Form onSubmit={handleSubmit(sendPost)} className="createForm">
+          <Button variant="outline-secondary" className="newPost" onClick={handleShow}>
+            New post
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Create a new post</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <Form className="createForm">
               <fieldset disabled={submit}>
                 <Form.Group className="mb-3" controlId="formGroupTitle">
                   <input
@@ -91,9 +104,16 @@ export default function NewPost() {
                   {errors.media && <FormError>{errors.media.message}</FormError>}
                 </Form.Group>
                 {postError && <FormError>{postError}</FormError>}
-                <button>{submit ? "Sending..." : "Send"}</button>
+                <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(sendPost)}>{submit ? "Sending..." : "Send"}</Button>
               </fieldset>
             </Form>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            </Modal.Footer>
+            </Modal>
             </>
         );
 

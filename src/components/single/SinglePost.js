@@ -27,7 +27,6 @@ function SinglePost({ id, title, body, media, _count, comments, reactions, autho
    <Card> 
     <Card.Body className="interactions">
       <div>
-
         {comments}
       </div>
       <div>

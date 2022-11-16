@@ -38,9 +38,13 @@ function Navigate() {
       <Nav className="me-auto">
 			{auth ? (
 				<>
-					<Nav.Link><Link to="/profile">My Profile</Link></Nav.Link>
-          {/* | <Link to="/feed">Feed</Link> */}
+        <div className="nav-middle">
+          <Nav.Link><Link to="/allprofiles">All Profiles</Link></Nav.Link>
+					<Nav.Link><Link to={`/profile/${auth.name}`}>My Profile</Link></Nav.Link>
+        </div>
+        <div>
           <button onClick={logout}>Log out</button>
+        </div>
 				</>
 			) : (
 				<>

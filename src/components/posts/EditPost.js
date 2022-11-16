@@ -9,6 +9,8 @@ import { BASE_URL } from "../../api/Api";
 import Form from 'react-bootstrap/Form';
 import DeletePost from "./DeletePost";
 import useAxios from "../../hooks/useAxios";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
@@ -18,6 +20,9 @@ const schema = yup.object().shape({
 
 export default function EditPost() {
   const [post, setPost] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [updated, setUpdated] = useState(false);
   const [fetchingPost, setFetchingPost] = useState(true);
   const [updatingPost, setUpdatingPost] = useState(false);
@@ -40,7 +45,7 @@ export default function EditPost() {
             if (response.data.media === null) {
               response.data.media = "";
             }
-    
+            console.log(response);
             setPost(response.data);
           } catch (error) {
             setFetchError(error.toString());
@@ -73,7 +78,14 @@ export default function EditPost() {
 
         return (
           <>
-          <h2>Edit post</h2>
+          <Button variant="outline-secondary" className="newPost" onClick={handleShow}>
+            Edit post
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit post</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
           <Form onSubmit={handleSubmit(onSubmit)} className="editForm">
               
                 <Form.Group className="mb-3" controlId="formGroupTitle">
@@ -99,10 +111,18 @@ export default function EditPost() {
                     />
                   {errors.media && <FormError>{errors.media.message}</FormError>}
                 </Form.Group>
-                <button>Update</button>
-                <DeletePost id={post.id} />
-              
+                <div className="editButtons">
+                  <Button variant="outline-secondary" className="newPost">Update</Button>
+                  <DeletePost id={post.id} />
+                </div>
             </Form>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            </Modal.Footer>
+            </Modal>
             </>
         );
 

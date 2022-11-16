@@ -65,20 +65,59 @@
     background: $green-light;
     color: white;
   }
+}
 
-  & button {
-    border: none;
-    background-color: $green-dark;
-    color: white;
-    margin-top: 10px;
-    border: $green;
-    border-radius: 50%;
-    border-style: double;
-    padding: 10px;
-  }
-  & button:hover {
-    background-color: white;
-    color: $green-dark;
-    transition: 0.3s;
+.followBtn {
+  background: none;
+  border: 2px solid $green;
+  &:hover {
+    border-radius: 5px;
   }
 }
+
+.unfollowBtn {
+  background: none;
+  border: 2px solid red;
+  &:hover {
+    border-radius: 5px;
+  }
+}
+
+.editForm {
+  text-align: center;
+}
+
+.editButtons {
+  display: flex;
+}
+
+.commentBtn {
+  display: flex;
+  border-color: 5px $green;
+  color: $green-dark;
+  background: white;
+  &:hover {
+    background: white;
+    color: $green-dark;
+    border-radius: 10px;
+  }
+}
+
+.reactForm {
+  padding: 10px;
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid $green;
+    & select {
+    border: 1px $green;
+  } & select:hover {
+    border: 1px $green-dark;
+  } & button {
+    color: $green-dark;
+    border: $green-dark;
+  } & button:hover {
+    color: black;
+  }
+}
+

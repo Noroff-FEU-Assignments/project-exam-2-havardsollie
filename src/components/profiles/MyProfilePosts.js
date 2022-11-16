@@ -54,16 +54,35 @@ function MyProfilePosts() {
 	}
 
   return (
-    <Card className="profilePosts">
-		 {profilePosts.map(post => {
-      return <Card>
-				<Link to={`/detail/edit/${post.id}`}>
-					{post.id}
-				</Link>
-				{post.title}
-        </Card>
-     })}
-    </Card>
+		<>
+		{profilePosts.map(post => {
+		 return (
+		 <>
+		 <Card className="feed-wrapper">
+		 <Card.Body>
+				 <Link to={`/detail/${post.id}`}>
+					 <Card.Body className="post-container">
+						 <Card.Title>{post.title}</Card.Title>
+						 <p>{post.body}</p>
+						 {/* {media ? <CardImg>{media}</CardImg> : <></>} */}
+					 </Card.Body>
+				 </Link>
+			 </Card.Body>
+			 <Card>
+					 <Card.Body className="interactions">
+						 <div>
+							 {post._count.comments}
+						 </div>
+						 <div>
+							 {post._count.reactions}
+						 </div>
+					 </Card.Body>
+				 </Card>
+				 </Card>
+				 </>
+		 )
+		})}
+	 </>
    );
   }
   

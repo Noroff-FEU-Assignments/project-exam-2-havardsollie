@@ -1,18 +1,59 @@
 .profileWrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
 }
 
 .profileAvatar {
-  display: flex;
-  align-items: center;
-  justify-content: left;
+  text-align: center;
 }
 
 .profileAvatar img {
-  height: auto;
-  width: auto;
   border-radius: 10px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 90%;
+}
+
+.followContainer {
+  background: white;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+.followContainer img {
+  border-radius: 50%;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.middle {
+  background-image: url("../../../assets/circle.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5%;
+}
+
+.followingList, .followersList {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.profilePostSection {
+  margin-top: 30px;
+  & h4 {
+    text-align: center;
+  }
 }

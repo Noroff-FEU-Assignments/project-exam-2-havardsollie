@@ -9,6 +9,19 @@
   }
 }
 
+.newPost {
+  display: flex;
+  margin: 0 auto;
+  border-color: 5px $green;
+  color: $green-dark;
+  background: white;
+  &:hover {
+    background: white;
+    color: $green-dark;
+    border-radius: 10px;
+  }
+}
+
 .post-container {
   padding: 3%;
   color: black;

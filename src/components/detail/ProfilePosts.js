@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { BASE_URL } from "../../api/Api";
 import { Card } from "react-bootstrap";
 
@@ -51,13 +51,35 @@ function ProfilePosts() {
 	}
 
   return (
-    <Card className="profilePosts">
+    <>
 		 {profilePosts.map(post => {
-      return <Card>
-					{post.id}
-        </Card>
+      return (
+			<>
+			<Card className="feed-wrapper">
+			<Card.Body>
+					<Link to={`/detail/${post.id}`}>
+						<Card.Body className="post-container">
+							<Card.Title>{post.title}</Card.Title>
+							<p>{post.body}</p>
+							{/* {media ? <CardImg>{media}</CardImg> : <></>} */}
+						</Card.Body>
+					</Link>
+				</Card.Body>
+				<Card>
+						<Card.Body className="interactions">
+							<div>
+								{post._count.comments}
+							</div>
+							<div>
+								{post._count.reactions}
+							</div>
+						</Card.Body>
+					</Card>
+					</Card>
+					</>
+			)
      })}
-    </Card>
+    </>
    );
   }
   
