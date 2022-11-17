@@ -8,21 +8,27 @@ function SinglePost({ id, title, body, media, _count, comments, commentsNumber, 
   <>
   <Card>
        <Card.Header className="authorLinks">
-       <Link to={`profile/${name}`}>
-        <div><p>{name}</p></div>
-        </Link>
+       <Card.Title>{title}</Card.Title>
         <div class="vr"></div>
         <Link to={`profile/${name}`}>
-        <div><p>{address}</p></div>
+        <div><p>{name}</p></div>
         </Link>
         </Card.Header>
         <Link to={`detail/${id}`}>
         <Card.Body className="post-container">
-         <Card.Title>{title}</Card.Title>
-         <p>{body}</p>
-         {/* {media ? <CardImg>{media}</CardImg> : <></>} */}
+         <div className="postImg">
+          {media ?
+          <img src={media} width="100%" height="auto"></img>
+          : <></>
+          }
+         </div>
          </Card.Body>
        </Link>
+       <Card.Body>
+       <div className="postText">
+         <Card.Text>{body}</Card.Text>
+        </div>
+       </Card.Body>
    </Card>
    <Card> 
     <Card.Body className="interactionsFeed">

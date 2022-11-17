@@ -41,3 +41,8 @@
   width: 50%;
   border: 2px solid $green;
 }
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}

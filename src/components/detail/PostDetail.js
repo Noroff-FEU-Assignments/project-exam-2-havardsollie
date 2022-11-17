@@ -70,8 +70,12 @@ function PostDetails() {
 				<Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} width={50} height={50}></img></Link>
 				<Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
 			</section>
-			
+			<hr />
 			<section className="postBody">
+				{post.media ? 
+				<img src={post.media} width="100%" height="auto"></img>
+				: <></>
+				}
 				<hr />
 				<h4>{post.body}</h4>
 			</section>

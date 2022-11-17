@@ -10,6 +10,7 @@ import { BASE_URL } from "../../api/Api";
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import coffeeman from "../../assets/coffeeman.png"
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
@@ -60,7 +61,8 @@ export default function NewPost() {
           console.log("Error:" + error);
         } finally {
           setSubmitting(false);
-          navigate("/"); 
+          navigate("/");
+          window.location.reload(); 
         }
       }
 
@@ -109,6 +111,7 @@ export default function NewPost() {
             </Form>
             </Modal.Body>
             <Modal.Footer>
+              <img src={coffeeman} width="auto" height={100}></img>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>

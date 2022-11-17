@@ -11,6 +11,7 @@ import AuthContext from "../../context/AuthContext";
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import coffeeman from "../../assets/coffeeman.png"
 
 const schema = yup.object().shape({
 	banner: yup.string(),
@@ -55,6 +56,8 @@ export default function UpdateMedia() {
           console.log("Error:" + error);
         } finally {
           setSubmitting(false);
+          navigate(`/profile/${auth.name}`);
+          window.location.reload();
         }
       }
 
@@ -72,12 +75,13 @@ export default function UpdateMedia() {
             <Modal.Title>Update banner and avatar</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <Form onSubmit={handleSubmit(updateMedia)} className="createForm">
+          <Form className="createForm">
               <fieldset disabled={submit}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                   <input
-                    {...register("banner")}
-                    placeholder="Banner"
+                    {...register("avatar")}
+                    defaultValue={auth.avatar}
+                    placeholder="Avatar"
                     />
                   {errors.banner && <FormError>{errors.banner.message}</FormError>}
                 </Form.Group>
@@ -85,18 +89,20 @@ export default function UpdateMedia() {
                 <hr />
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                   <input
-                    {...register("avatar")}
-                    placeholder="Avatar"                    
+                    {...register("banner")}
+                    defaultValue={auth.banner}  
+                    placeholder="Banner"                
                     />
                   {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
                 </Form.Group>
                 <hr />
                 {updateError && <FormError>{updateError}</FormError>}
-                <Button variant="outline-secondary" className="newPost">{submit ? "Updating..." : "Update"}</Button>
+                <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(updateMedia)}>{submit ? "Updating..." : "Update"}</Button>
               </fieldset>
             </Form>
             </Modal.Body>
             <Modal.Footer>
+            <img src={coffeeman} width="auto" height={100}></img>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>

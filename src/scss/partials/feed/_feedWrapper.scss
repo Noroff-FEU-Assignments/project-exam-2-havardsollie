@@ -23,8 +23,18 @@
 }
 
 .post-container {
+  display: flex;
+  justify-content: space-evenly;
   padding: 3%;
   color: black;
+}
+
+.postText {
+  width: 100%;
+}
+
+.postImg {
+  width: 100%;
 }
 
 .cart-title h5, p {

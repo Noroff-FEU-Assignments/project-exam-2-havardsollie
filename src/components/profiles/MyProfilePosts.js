@@ -14,7 +14,7 @@ function MyProfilePosts() {
   const { name } = useParams();
 
 
-  const url = BASE_URL + "/social/profiles/" + auth.name + "/posts";
+  const url = BASE_URL + "/social/profiles/" + auth.name + "/posts?_author=true&_comments=true&_reactions=true";
 
 	useEffect(function () {
 		async function fetchData() {
@@ -69,14 +69,27 @@ function MyProfilePosts() {
 				 </Link>
 			 </Card.Body>
 			 <Card>
-					 <Card.Body className="interactions">
-						 <div>
-							 {post._count.comments}
-						 </div>
-						 <div>
-							 {post._count.reactions}
-						 </div>
-					 </Card.Body>
+			 <Card.Body className="interactionsFeed">
+      <section>
+        <h6>Comments</h6>
+        <hr />
+        <div className="feedComments">
+        {post.comments ? post.comments.map((com) => (
+          <p>{com.body}</p>
+      )):  <p>0</p>}
+      </div>
+      </section>
+      <div className="vr" />
+      <section>
+        <h6>Reactions</h6>
+        <hr />
+        <div className="feedReactions">
+       {post.reactions ? post.reactions.map((emoji) => (
+          <p>{emoji.symbol}</p>
+      )):  <p>0</p>}
+      </div>
+      </section>
+       </Card.Body>
 				 </Card>
 				 </Card>
 				 </>

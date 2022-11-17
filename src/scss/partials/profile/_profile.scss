@@ -20,6 +20,9 @@
   flex-direction: column;
   width: 100%;
   max-width: 90%;
+  background-image: url("../../../assets/circle.png");
+  background-position: center;
+  background-size: cover;
 }
 
 .followContainer {
@@ -34,25 +37,24 @@
 
 .upper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .middle {
-  background-image: url("../../../assets/circle.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 5%;
 }
 
 .followingList, .followersList {
   display: flex;
-  justify-content: space-evenly;
+
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 .profilePostSection {
   margin-top: 30px;
+
   & h4 {
     text-align: center;
   }

@@ -11,6 +11,7 @@ import DeletePost from "./DeletePost";
 import useAxios from "../../hooks/useAxios";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import coffeeman from "../../assets/coffeeman.png"
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
@@ -51,6 +52,7 @@ export default function EditPost() {
             setFetchError(error.toString());
           } finally {
             setFetchingPost(false);
+            window.location.reload();
           }
         }
         getPost();
@@ -86,7 +88,7 @@ export default function EditPost() {
             <Modal.Title>Edit post</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <Form onSubmit={handleSubmit(onSubmit)} className="editForm">
+          <Form onSubmit={handleSubmit(onSubmit)} className="createForm">
               
                 <Form.Group className="mb-3" controlId="formGroupTitle">
                   <input
@@ -118,6 +120,7 @@ export default function EditPost() {
             </Form>
             </Modal.Body>
             <Modal.Footer>
+            <img src={coffeeman} width="auto" height={100}></img>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>

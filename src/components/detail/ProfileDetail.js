@@ -8,6 +8,7 @@ import UnfollowButton from "../profiles/Unfollow";
 import AuthContext from "../../context/AuthContext";
 import MyProfilePosts from "../profiles/MyProfilePosts";
 import UpdateMedia from "../profiles/UpdateMedia";
+import DefaultAvatar from "../../common/DefaultAvatar";
 
 function ProfileDetails() {
 	const [profile, setProfile] = useState(null);
@@ -90,23 +91,21 @@ function ProfileDetails() {
   return (
     <>
 		<Card className="profileWrapper">
-
 			<section className="profileAvatar">
 				<img src={profile.avatar} width={300} height={300}></img>
 				<h3>{profile.name}</h3>
+				<h6>{profile.email}</h6>
 			</section>
 
 			<div class="vr"></div>
 			
 			<section className="profileInfo">
 				<Card.Body className="upper">
-					<h4>{profile.email}</h4>
 					{profile.name === auth.name ?
 					<div><UpdateMedia /></div>
 					: <div>{Object.values(followers).find(follower => (follower.name === auth.name)) ? <UnfollowButton /> : <FollowButton />}</div>
 				}
 				</Card.Body>
-				<hr />
 				<Card.Body className="middle">
 					<div className="followContainer">
 						<h5>Followers: {profile._count.followers}</h5>
@@ -115,7 +114,7 @@ function ProfileDetails() {
 						<div>
 							{follower.avatar ?
 						<Link to={`/profile/${follower.name}`}><img src={follower.avatar} width={50} height={50}></img></Link>
-						: <p>{follower.name}</p>	
+						: <DefaultAvatar />	
 						}
 						</div>
 					))}
@@ -127,7 +126,7 @@ function ProfileDetails() {
 						<div>
 							{follow.avatar ?
 							<Link to={`/profile/${follow.name}`}><img src={follow.avatar} width={50} height={50}></img></Link>
-						: <p>{follow.name}</p>
+						: <Link to={`/profile/${follow.name}`}><p>{follow.name}</p></Link>
 						}
 						</div>
 					))}
@@ -137,6 +136,9 @@ function ProfileDetails() {
 				</Card.Body>
 			</section>
 		</Card>
+		<section className="profileBanner">
+				<img src={profile.banner} width="100%" height="auto"></img>
+			</section>
 		<Card className="profilePostSection">
 			{profile.name === auth.name ?
 			<><h4>My posts</h4><MyProfilePosts /></>
