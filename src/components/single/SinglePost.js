@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Card, CardImg } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function SinglePost({ id, title, body, media, _count, comments, reactions, author, name, address }) {
+function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, author, name, address }) {
 
  return (
   <>
@@ -25,13 +25,26 @@ function SinglePost({ id, title, body, media, _count, comments, reactions, autho
        </Link>
    </Card>
    <Card> 
-    <Card.Body className="interactions">
-      <div>
-        {comments}
+    <Card.Body className="interactionsFeed">
+      <section>
+        <h6>Comments</h6>
+        <hr />
+        <div className="feedComments">
+        {comments ? comments.map((com) => (
+          <p>{com.body}</p>
+      )):  <p>0</p>}
       </div>
-      <div>
-       {reactions}
+      </section>
+      <div className="vr" />
+      <section>
+        <h6>Reactions</h6>
+        <hr />
+        <div className="feedReactions">
+       {reactions ? reactions.map((emoji) => (
+          <p>{emoji.symbol}</p>
+      )):  <p>0</p>}
       </div>
+      </section>
        </Card.Body>
     </Card>
      </>

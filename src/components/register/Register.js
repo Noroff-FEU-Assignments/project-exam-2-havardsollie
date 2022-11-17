@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 // import axios from "axios";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
+import { Button } from "react-bootstrap";
 
 
 // const url = BASE_URL + TOKEN_PATH;
@@ -87,7 +88,7 @@ async function registerUser(schema) {
             {/* <p>{errors.password.message}</p> */}
             <hr />
       
-            <button>{submit ? "Registering user" : "Register"}</button>
+            <Button variant="outline-secondary" className="newPost">{submit ? "Registering user" : "Register"}</Button>
             {/* <div>{errors ? <p>{registerError}</p> : "User created"}</div> */}
             </fieldset>
           </form>

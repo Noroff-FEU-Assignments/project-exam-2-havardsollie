@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Button } from "react-bootstrap";
 
 import logo from "../assets/caffeine_logo.png";
 
@@ -43,7 +44,7 @@ function Navigate() {
 					<Nav.Link><Link to={`/profile/${auth.name}`}>My Profile</Link></Nav.Link>
         </div>
         <div>
-          <button onClick={logout}>Log out</button>
+          <Button variant="outline-secondary" className="newPost" onClick={logout}>Log out</Button>
         </div>
 				</>
 			) : (

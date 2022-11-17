@@ -63,7 +63,9 @@ function ProfileDetails() {
 	}
 
 	const followers = profile.followers;
+	console.log(followers)
 	const following = profile.following;
+	console.log(following)
 
 	console.log(followers);
 	console.log(auth.name)
@@ -100,11 +102,11 @@ function ProfileDetails() {
 				<Card.Body className="upper">
 					<h4>{profile.email}</h4>
 					{profile.name === auth.name ?
-					<UpdateMedia />
-					: <div>{Object.values(followers).filter(name => auth.name === name) ? <UnfollowButton /> : <FollowButton />}</div>
+					<div><UpdateMedia /></div>
+					: <div>{Object.values(followers).find(follower => (follower.name === auth.name)) ? <UnfollowButton /> : <FollowButton />}</div>
 				}
 				</Card.Body>
-				
+				<hr />
 				<Card.Body className="middle">
 					<div className="followContainer">
 						<h5>Followers: {profile._count.followers}</h5>

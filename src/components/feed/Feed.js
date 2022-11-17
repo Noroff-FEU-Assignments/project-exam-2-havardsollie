@@ -22,7 +22,7 @@ function ListOfPosts() {
       }
     
         try {
-            const response = await fetch(`${BASE_URL}/social/posts/?_author=true`, options)
+            const response = await fetch(`${BASE_URL}/social/posts/?_author=true&_comments=true&_reactions=true`, options)
             const data = await response.json();
             console.log("response", data);
             setPosts(data);
@@ -57,7 +57,7 @@ function ListOfPosts() {
         const { id, title, body, media, _count, comments, reactions, author, name, address } = post;
 				return <>
         <div className="feed-wrapper">
-          <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} address={author.email} comments={_count.comments} reactions={_count.reactions} />
+          <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} address={author.email} comments={comments} commentsNumber={_count.comments} reactions={reactions} reactionsNumber={_count.reactions} />
         </div>
         </>
 			})}

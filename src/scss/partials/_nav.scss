@@ -20,6 +20,12 @@
   }
 }
 
+h1 {
+  font-family: $font-logo;
+  text-decoration: underline 2px $green;
+  padding: 5px;
+}
+
 .me-auto {
   width: 100%;
   display: flex;

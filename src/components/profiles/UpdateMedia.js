@@ -9,6 +9,8 @@ import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
 import AuthContext from "../../context/AuthContext";
 import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const schema = yup.object().shape({
 	banner: yup.string(),
@@ -19,6 +21,9 @@ export default function UpdateMedia() {
   const [auth] = useContext(AuthContext);
 	const [submit, setSubmitting] = useState(false);
 	const [updateError, setUpdateError] = useState(null);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
@@ -59,31 +64,44 @@ export default function UpdateMedia() {
 
         return (
           <>
-          <Form onSubmit={handleSubmit(updateMedia)} className="updateForm">
+          <Button variant="outline-secondary" className="newPost" onClick={handleShow}>
+            Update images
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Update banner and avatar</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <Form onSubmit={handleSubmit(updateMedia)} className="createForm">
               <fieldset disabled={submit}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                  Banner
                   <input
                     {...register("banner")}
-                    placeholder="Image URL"
+                    placeholder="Banner"
                     />
                   {errors.banner && <FormError>{errors.banner.message}</FormError>}
                 </Form.Group>
 
                 <hr />
                 <Form.Group className="mb-3" controlId="formGroupPassword">
-                  Avatar
                   <input
                     {...register("avatar")}
-                    placeholder="Image URL"                    
+                    placeholder="Avatar"                    
                     />
                   {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
                 </Form.Group>
                 <hr />
                 {updateError && <FormError>{updateError}</FormError>}
-                <button>{submit ? "Updating..." : "Update"}</button>
+                <Button variant="outline-secondary" className="newPost">{submit ? "Updating..." : "Update"}</Button>
               </fieldset>
             </Form>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            </Modal.Footer>
+            </Modal>
             </>
         );
 
