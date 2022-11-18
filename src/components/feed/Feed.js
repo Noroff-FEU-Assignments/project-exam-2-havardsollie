@@ -5,6 +5,7 @@ import SinglePost from "../single/SinglePost";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import NewPost from "../posts/NewPost";
+import coffeeman from "../../assets/coffeeman.png";
 
 function ListOfPosts() {
 	const [posts, setPosts] = useState([]);
@@ -53,11 +54,21 @@ function ListOfPosts() {
       <hr />
       <NewPost />
       <hr />
-			{posts.map((post) => {
-        const { id, title, body, media, _count, comments, reactions, author, name, address } = post;
+      <section className="feedHeading">
+      <h2>Latest thoughts in the</h2>
+      <img
+            src={coffeeman}
+            width="auto"
+            height="77px"
+            alt="Coffee drinking man"
+          />
+           <h2>community</h2>
+          </section>
+			{posts && posts.map((post) => {
+        const { id, title, body, media, _count, comments, reactions, author, avatar } = post;
 				return <>
         <div className="feed-wrapper">
-          <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} address={author.email} comments={comments} commentsNumber={_count.comments} reactions={reactions} reactionsNumber={_count.reactions} />
+          <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} avatar={author.avatar} comments={comments} commentsNumber={_count.comments} reactions={reactions} reactionsNumber={_count.reactions} />
         </div>
         </>
 			})}

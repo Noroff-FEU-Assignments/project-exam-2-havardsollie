@@ -9,6 +9,7 @@ import AuthContext from "../../context/AuthContext";
 import MyProfilePosts from "../profiles/MyProfilePosts";
 import UpdateMedia from "../profiles/UpdateMedia";
 import DefaultAvatar from "../../common/DefaultAvatar";
+import NewPost from "../posts/NewPost";
 
 function ProfileDetails() {
 	const [profile, setProfile] = useState(null);
@@ -97,15 +98,8 @@ function ProfileDetails() {
 				<h6>{profile.email}</h6>
 			</section>
 
-			<div class="vr"></div>
-			
+			<div class="vr" />
 			<section className="profileInfo">
-				<Card.Body className="upper">
-					{profile.name === auth.name ?
-					<div><UpdateMedia /></div>
-					: <div>{Object.values(followers).find(follower => (follower.name === auth.name)) ? <UnfollowButton /> : <FollowButton />}</div>
-				}
-				</Card.Body>
 				<Card.Body className="middle">
 					<div className="followContainer">
 						<h5>Followers: {profile._count.followers}</h5>
@@ -132,7 +126,13 @@ function ProfileDetails() {
 					))}
 					</div>
 				</div>
-				
+				</Card.Body>
+				<div class="vr" />
+				<Card.Body className="upper">
+					{profile.name === auth.name ?
+					<div><UpdateMedia /></div>
+					: <div>{Object.values(followers).find(follower => (follower.name === auth.name)) ? <UnfollowButton /> : <FollowButton />}</div>
+				}
 				</Card.Body>
 			</section>
 		</Card>

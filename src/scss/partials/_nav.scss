@@ -31,7 +31,8 @@ h1 {
   display: flex;
   justify-content: space-around;
   & a {
-    color: $green;
+    font-family: $font-nav;
+    color: $green-dark;
     padding: 5px;
     &:hover {
       color: $green-dark;
@@ -41,6 +42,10 @@ h1 {
 
 .nav-middle {
   display: flex;
+  font-size: 2rem;
+  & a:hover {
+    color: $blue;
+  }
 }
 
 .authorLinks, .comments a {

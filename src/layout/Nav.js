@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 // import AuthenticatedNav from "./AuthNav";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -8,13 +8,23 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Button } from "react-bootstrap";
-
 import logo from "../assets/caffeine_logo.png";
+import { BsPersonCircle } from "react-icons/bs";
+import { BsPeople } from "react-icons/bs";
 
 function Navigate() {
 
   const [auth, setAuth] = useContext(AuthContext);
+  // const [isHovering, setIsHovering] = useState(false);
   const navigate = useNavigate();
+
+  // const handleMouseOver = () => {
+  //   setIsHovering(true);
+  // };
+
+  // const handleMouseOut = () => {
+  //   setIsHovering(false);
+  // };
 
   function logout() {
     setAuth(null);
@@ -40,8 +50,8 @@ function Navigate() {
 			{auth ? (
 				<>
         <div className="nav-middle">
-          <Nav.Link><Link to="/allprofiles">All Profiles</Link></Nav.Link>
-					<Nav.Link><Link to={`/profile/${auth.name}`}>My Profile</Link></Nav.Link>
+          <Nav.Link><Link to="/allprofiles"><BsPeople /></Link></Nav.Link>
+					<Nav.Link><Link to={`/profile/${auth.name}`}><BsPersonCircle /></Link></Nav.Link>
         </div>
         <div>
           <Button variant="outline-secondary" className="newPost" onClick={logout}>Log out</Button>

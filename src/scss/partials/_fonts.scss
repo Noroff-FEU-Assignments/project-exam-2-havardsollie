@@ -1,15 +1,30 @@
 @import "./colors";
 
 $font-logo: 'Abril Fatface', cursive;
-// $font-nav:
-// $font-main:
+$font-nav:  'Josefin Slab', serif;
+$font-main: 'Changa', sans-serif;
+$font-special: 'Indie Flower', cursive;
 
 a {
   text-decoration: none;
+}
+
+h2 {
+  font-family: $font-special;
 }
 
 h3 {
   font-family: $font-logo;
   font-size: larger;
   padding: 5px;
+}
+
+h5 {
+  font-weight: lighter;
+  color: black;
+  padding: 5px;
+}
+
+h6 {
+  font-family: $font-main;
 }

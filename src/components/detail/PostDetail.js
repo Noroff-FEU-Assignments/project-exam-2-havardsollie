@@ -64,12 +64,8 @@ function PostDetails() {
   return (
 		<Card className="postWrapper">
 
-			<section className="authorLinks">
-				<h2>{post.title}</h2>
-				<div className="vr"></div>
-				<Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} width={50} height={50}></img></Link>
-				<Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
-			</section>
+			
+			<h2>{post.title}</h2>
 			<hr />
 			<section className="postBody">
 				{post.media ? 
@@ -77,7 +73,12 @@ function PostDetails() {
 				: <></>
 				}
 				<hr />
-				<h4>{post.body}</h4>
+				<section className="authorLinksPost">
+					<Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} width={50} height={50}></img></Link>
+					<Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
+					<hr />
+				</section>
+				<h5>{post.body}</h5>
 			</section>
 			<hr />
 
@@ -92,7 +93,7 @@ function PostDetails() {
 				<ReactToPost />
 				<hr />
 				<div className="comments">
-					<p>Comments {post._count.comments}</p>
+					<h6>Comments {post._count.comments}</h6>
 					{post.comments && post.comments.map((comment) => (
 					<div className="commentsInner">
 						<Link to={`/profile/${comment.owner}`}><p>{comment.owner}:</p></Link>

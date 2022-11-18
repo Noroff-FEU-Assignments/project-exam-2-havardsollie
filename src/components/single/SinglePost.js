@@ -2,17 +2,13 @@ import PropTypes from "prop-types";
 import { Card, CardImg } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, author, name, address }) {
+function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, author, name, avatar }) {
 
  return (
   <>
   <Card>
-       <Card.Header className="authorLinks">
+       <Card.Header>
        <Card.Title>{title}</Card.Title>
-        <div class="vr"></div>
-        <Link to={`profile/${name}`}>
-        <div><p>{name}</p></div>
-        </Link>
         </Card.Header>
         <Link to={`detail/${id}`}>
         <Card.Body className="post-container">
@@ -23,12 +19,18 @@ function SinglePost({ id, title, body, media, _count, comments, commentsNumber, 
           }
          </div>
          </Card.Body>
-       </Link>
+         <hr />
        <Card.Body>
+       <section className="authorLinksPost">
+					<Link to={`/profile/${name}`}><img src={avatar} width={50} height={50}></img></Link>
+					<Link to={`/profile/${name}`}><h3>{name}</h3></Link>
+					<hr />
+				</section>
        <div className="postText">
-         <Card.Text>{body}</Card.Text>
+         <h5>{body}</h5>
         </div>
        </Card.Body>
+       </Link>
    </Card>
    <Card> 
     <Card.Body className="interactionsFeed">

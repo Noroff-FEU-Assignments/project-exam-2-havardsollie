@@ -22,6 +22,21 @@
   }
 }
 
+.feedHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  & img {
+
+  }
+  & h2 {
+    color: black;
+
+    font-size: 25px;
+  }
+}
+
 .post-container {
   display: flex;
   justify-content: space-evenly;
@@ -31,14 +46,19 @@
 
 .postText {
   width: 100%;
+  & h5 {
+    color: black;
+    padding: 5px;
+  }
 }
 
 .postImg {
   width: 100%;
 }
 
-.cart-title h5, p {
+.cart-title h5 {
   text-decoration: none;
+  font-family: $font-logo;
 }
 
 .interactionsFeed {
@@ -69,11 +89,4 @@
 .interactions {
   display: flex;
   justify-content: space-between;
-}
-
-.authorLinks {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  text-decoration: none;
 }

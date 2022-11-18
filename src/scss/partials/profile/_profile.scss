@@ -17,12 +17,12 @@
 
 .profileInfo {
   display: flex;
-  flex-direction: column;
+  flex-direction: flex;
   width: 100%;
   max-width: 90%;
-  background-image: url("../../../assets/circle.png");
-  background-position: center;
-  background-size: cover;
+  // background-image: url("../../../assets/circle.png");
+  // background-position: center;
+  // background-size: cover;
 }
 
 .followContainer {
@@ -38,7 +38,7 @@
 .upper {
   display: flex;
   justify-content: center;
-  align-items: center;
+
 }
 
 .middle {
