@@ -63,22 +63,26 @@ function PostDetails() {
 
   return (
 		<Card className="postWrapper">
-
-			
-			<h2>{post.title}</h2>
-			<hr />
 			<section className="postBody">
 				{post.media ? 
+				<>
 				<img src={post.media} width="100%" height="auto"></img>
+				<hr />
+				</>
 				: <></>
 				}
-				<hr />
 				<section className="authorLinksPost">
 					<Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} width={50} height={50}></img></Link>
 					<Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
+					<h2>{post.title}</h2>
 					<hr />
 				</section>
 				<h5>{post.body}</h5>
+				{post.tags && post.tags.map((tag) => (
+					
+						<h6>#{tag}</h6>
+					
+				))}
 			</section>
 			<hr />
 
@@ -105,7 +109,7 @@ function PostDetails() {
 			<hr />
 			</section>
 			{post.author.name === auth.name ?
-			<EditPost />
+			<EditPost title={post.title} body={post.body} media={post.media} />
 			: <></>
 			}
 		</Card>

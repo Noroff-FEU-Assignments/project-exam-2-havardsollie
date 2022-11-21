@@ -15,12 +15,6 @@ function DeletePost({id}) {
 
   let history = useNavigate();
 
-  // const { id } = useParams();
- 
-  // if (!id) {
-  //  history.push("/");
-  // }
-
   if (!auth) {
     history.push("/");
   }
@@ -37,6 +31,8 @@ function DeletePost({id}) {
           history("/");
         } catch (error) {
           setError(error);
+        } finally {
+          history(`/profile/${auth.name}`);
         }
       }
 		}

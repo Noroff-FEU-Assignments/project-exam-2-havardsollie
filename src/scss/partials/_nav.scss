@@ -31,12 +31,8 @@ h1 {
   display: flex;
   justify-content: space-around;
   & a {
-    font-family: $font-nav;
     color: $green-dark;
     padding: 5px;
-    &:hover {
-      color: $green-dark;
-    }
   }
 }
 
@@ -59,3 +55,28 @@ h1 {
   }
 }
 
+.logOut {
+  display: flex;
+  font-size: 2rem;
+  align-items: baseline;
+  justify-content: baseline;
+  & a:hover {
+    color: $blue;
+  }
+}
+
+@media (max-width: 992px) {
+  .me-auto {
+    display: block;
+    padding: 5px;
+  }
+
+  .nav-middle {
+    display: block;
+  }
+
+  .nav-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -98,7 +98,7 @@ function ProfileDetails() {
 				<h6>{profile.email}</h6>
 			</section>
 
-			<div class="vr" />
+			<div class="vr" className="profileLines" />
 			<section className="profileInfo">
 				<Card.Body className="middle">
 					<div className="followContainer">
@@ -127,7 +127,7 @@ function ProfileDetails() {
 					</div>
 				</div>
 				</Card.Body>
-				<div class="vr" />
+				<div class="vr" className="profileLines"/>
 				<Card.Body className="upper">
 					{profile.name === auth.name ?
 					<div><UpdateMedia /></div>

@@ -11,6 +11,7 @@ import { Button } from "react-bootstrap";
 import logo from "../assets/caffeine_logo.png";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
+import { BsDoorOpen } from "react-icons/bs";
 
 function Navigate() {
 
@@ -53,8 +54,8 @@ function Navigate() {
           <Nav.Link><Link to="/allprofiles"><BsPeople /></Link></Nav.Link>
 					<Nav.Link><Link to={`/profile/${auth.name}`}><BsPersonCircle /></Link></Nav.Link>
         </div>
-        <div>
-          <Button variant="outline-secondary" className="newPost" onClick={logout}>Log out</Button>
+        <div className="nav-right">
+          <Nav.Link><BsDoorOpen className="logOut" onClick={logout} /></Nav.Link>
         </div>
 				</>
 			) : (

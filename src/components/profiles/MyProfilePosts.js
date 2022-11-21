@@ -4,6 +4,7 @@ import { BASE_URL } from "../../api/Api";
 import { Card } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import { BsChat } from "react-icons/bs";
 
 function MyProfilePosts() {
   const [auth] = useContext(AuthContext);
@@ -62,31 +63,41 @@ function MyProfilePosts() {
 		 <Card.Body>
 				 <Link to={`/detail/${post.id}`}>
 					 <Card.Body className="post-container">
-						 <Card.Title>{post.title}</Card.Title>
-						 <p>{post.body}</p>
-						 {/* {media ? <CardImg>{media}</CardImg> : <></>} */}
-					 </Card.Body>
-				 </Link>
-			 </Card.Body>
-			 <Card>
-			 <Card.Body className="interactionsFeed">
-      <section>
-        <h6>Comments</h6>
-        <hr />
-        <div className="feedComments">
-        {post.comments ? post.comments.map((com) => (
-          <p>{com.body}</p>
-      )):  <p>0</p>}
-      </div>
-      </section>
-      <div className="vr" />
-      <section>
-        <h6>Reactions</h6>
-        <hr />
+					 <div className="postText">
+					 <h2>{post.title}</h2>
+         <h5>{post.body}</h5>
+        </div>
+				{post.media ?
+				<div className="postImg">
+					<img src={post.media} width="100%" height="200px"></img>
+				</div>
+				: <></>
+				}
+				</Card.Body>
+					 <section>
         <div className="feedReactions">
        {post.reactions ? post.reactions.map((emoji) => (
           <p>{emoji.symbol}</p>
       )):  <p>0</p>}
+      </div>
+      </section>
+				 </Link>
+			 </Card.Body>
+			 <Card>
+			 <Card.Body className="interactionsFeed">
+			 <section>
+        <div className="commentsHead">
+        <h6><BsChat /></h6>
+        <h6>{post._count.comments}</h6>
+        </div>
+        <hr />
+        <div className="comments">
+        {post.comments ? post.comments.map((com) => (
+					<div className="commentsInner">
+          <Link to={`/profile/${com.owner}`}><p>{com.owner}:</p></Link>
+          <p>{com.body}</p>
+        </div>
+      )):  <></>}
       </div>
       </section>
        </Card.Body>

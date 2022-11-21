@@ -62,19 +62,24 @@
 }
 
 .interactionsFeed {
-  display: flex;
-  justify-content: space-evenly;
   & h6 {
-    text-align: center;
+    text-align: left;
   }
+}
+
+.commentsHead {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
 }
 
 .feedComments {
   text-align: left;
+  max-width: 75%;
 }
 
 .feedReactions {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-grow: 1;
   gap: 5px;

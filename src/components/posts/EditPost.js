@@ -1,25 +1,19 @@
 import { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
 // import AuthContext from "../../context/AuthContext";
 import Form from 'react-bootstrap/Form';
 import DeletePost from "./DeletePost";
-import useAxios from "../../hooks/useAxios";
+// import useAxios from "../../hooks/useAxios";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
+import { schema } from "./Schema";
 
-const schema = yup.object().shape({
-  title: yup.string().required("Please enter a title"),
-  body: yup.string().required("Please enter your message"),
-  media: yup.string().nullable().notRequired(),
-});
-
-export default function EditPost() {
+export default function EditPost({ title, body, tags, media }) {
   const [post, setPost] = useState([]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -30,47 +24,29 @@ export default function EditPost() {
   const [fetchError, setFetchError] = useState(null);
   const [updateError, setUpdateError] = useState(null);
 
-	const { register, handleSubmit, reset, formState: { errors } } = useForm({
+	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
 	});
 
   let { id } = useParams();
   const navigate = useNavigate();
-  const http = useAxios();
-  const url = `/social/posts/${id}`
+  // const http = useAxios();
+  // const url = `/social/posts/${id}`
 
-  useEffect(function () {
-    async function getPost() {
-        try {
-            const response = await http.get(url)
-            if (response.data.media === null) {
-              response.data.media = "";
-            }
-            console.log(response);
-            setPost(response.data);
-          } catch (error) {
-            setFetchError(error.toString());
-          } finally {
-            setFetchingPost(false);
-            window.location.reload();
-          }
-        }
-        getPost();
-  }, []);
-
-
-  async function onSubmit(data) {
-    setUpdatingPost(true);
-    setUpdateError(null);
-    setUpdated(false);
-
-    if (data.media === "") {
-      data.media = null;
+  async function onSubmit(schema) {
+    const options = {
+      method: "PUT",
+      body: JSON.stringify(schema),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
+      },
     }
 
     try {
-      const response = await http.put(url, data);
-      setUpdated(true);
+      const response = await fetch(`${BASE_URL}/social/posts/${id}`, options);
+      const data = await response.json();
+      console.log(data)
     } catch (error) {
       setUpdateError(error.toString())
     } finally {
@@ -88,12 +64,12 @@ export default function EditPost() {
             <Modal.Title>Edit post</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <Form onSubmit={handleSubmit(onSubmit)} className="createForm">
+          <Form className="createForm">
               
                 <Form.Group className="mb-3" controlId="formGroupTitle">
                   <input
                     {...register("title")}
-                    defaultValue={post.title}
+                    defaultValue={title}
                     />
                   {errors.title && <FormError>{errors.title.message}</FormError>}
                 </Form.Group>
@@ -101,21 +77,34 @@ export default function EditPost() {
                 <Form.Group className="mb-3" controlId="formGroupBody">
                   <input
                     {...register("body")}
-                    defaultValue={post.body}
+                    defaultValue={body}
+                    placeholder="Body text"
                     />
                   {errors.body && <FormError>{errors.body.message}</FormError>}
                 </Form.Group>
                 <hr />
+                {/* <Form.Group className="mb-3" controlId="formGroupTags">
+                  <input
+                    {...register("tags")}
+                    defaultValue={tags}
+                    placeholder="Tags"
+                    />
+                  {errors.tags && <FormError>{errors.tags.message}</FormError>}
+                </Form.Group>
+                <hr /> */}
                 <Form.Group className="mb-3" controlId="formGroupMedia">
                   <input
                     {...register("media")}
-                    defaultValue={post.media}
+                    defaultValue={media}
+                    placeholder="Image URL"
                     />
                   {errors.media && <FormError>{errors.media.message}</FormError>}
                 </Form.Group>
+                <hr />
                 <div className="editButtons">
-                  <Button variant="outline-secondary" className="newPost">Update</Button>
-                  <DeletePost id={post.id} />
+                  <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(onSubmit)}>Update</Button>
+                  <DeletePost id={id} />
+                  
                 </div>
             </Form>
             </Modal.Body>

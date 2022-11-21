@@ -7,10 +7,15 @@
   }
 }
 
+.postTitle {
+  font-size: 25px;
+  padding-left: 10px;
+}
+
 .authorLinksPost {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 100%;
   padding: 5px;
 }
 
@@ -28,6 +33,24 @@
   display: flex;
   width: 25%;
   justify-content: space-around;
+}
+
+.reactForm {
+  padding: 10px;
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid $green;
+    & select {
+    border: 1px $green;
+  } & select:hover {
+    border: 1px $green-dark;
+  } & button {
+    color: $green-dark;
+    border: $green-dark;
+  } & button:hover {
+    color: black;
+  }
 }
 
 .reactSelector {
@@ -55,4 +78,14 @@
 .modal-footer {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 992px) {
+  .reactForm {
+    width: 100%;
+  }
+
+  .commentSection {
+    width: 100%;
+  }
 }

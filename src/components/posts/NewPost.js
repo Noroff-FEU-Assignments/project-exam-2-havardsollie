@@ -15,6 +15,7 @@ import coffeeman from "../../assets/coffeeman.png"
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
   body: yup.string().required("Please enter your message"),
+  tags: yup.array().nullable(),
   media: yup.string().nullable().notRequired(),
 });
 
@@ -61,8 +62,8 @@ export default function NewPost() {
           console.log("Error:" + error);
         } finally {
           setSubmitting(false);
-          navigate("/");
-          window.location.reload(); 
+          // navigate("/");
+          // window.location.reload(); 
         }
       }
 
@@ -96,6 +97,14 @@ export default function NewPost() {
                     placeholder="Write something"
                     />
                   {errors.body && <FormError>{errors.body.message}</FormError>}
+                </Form.Group>
+                <hr />
+                <Form.Group className="mb-3" controlId="formGroupTags">
+                  <input
+                    {...register("tags")}
+                    placeholder="Tags"
+                    />
+                  {errors.tags && <FormError>{errors.tags.message}</FormError>}
                 </Form.Group>
                 <hr />
                 <Form.Group className="mb-3" controlId="formGroupMedia">

@@ -1,6 +1,6 @@
 .welcomeText {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
 }
 
@@ -106,24 +106,6 @@
     background: white;
     color: $green-dark;
     border-radius: 10px;
-  }
-}
-
-.reactForm {
-  padding: 10px;
-  width: 30%;
-  display: flex;
-  justify-content: space-evenly;
-  border: 2px solid $green;
-    & select {
-    border: 1px $green;
-  } & select:hover {
-    border: 1px $green-dark;
-  } & button {
-    color: $green-dark;
-    border: $green-dark;
-  } & button:hover {
-    color: black;
   }
 }
 
