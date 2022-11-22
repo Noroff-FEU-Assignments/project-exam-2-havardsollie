@@ -33,10 +33,17 @@ export default function EditPost({ title, body, tags, media }) {
   // const http = useAxios();
   // const url = `/social/posts/${id}`
 
-  async function onSubmit(schema) {
+  async function onSubmit(data) {
+    const formData = {
+      title: data.title,
+      body: data.body,
+      tags: data.tags.split(","),
+      media: data.media,
+    };
+
     const options = {
       method: "PUT",
-      body: JSON.stringify(schema),
+      body: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
@@ -51,6 +58,7 @@ export default function EditPost({ title, body, tags, media }) {
       setUpdateError(error.toString())
     } finally {
       navigate(`/detail/${id}`)
+      window.location.reload();
     }
   }
 
@@ -83,7 +91,7 @@ export default function EditPost({ title, body, tags, media }) {
                   {errors.body && <FormError>{errors.body.message}</FormError>}
                 </Form.Group>
                 <hr />
-                {/* <Form.Group className="mb-3" controlId="formGroupTags">
+                <Form.Group className="mb-3" controlId="formGroupTags">
                   <input
                     {...register("tags")}
                     defaultValue={tags}
@@ -91,7 +99,7 @@ export default function EditPost({ title, body, tags, media }) {
                     />
                   {errors.tags && <FormError>{errors.tags.message}</FormError>}
                 </Form.Group>
-                <hr /> */}
+                <hr />
                 <Form.Group className="mb-3" controlId="formGroupMedia">
                   <input
                     {...register("media")}

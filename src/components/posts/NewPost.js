@@ -11,11 +11,12 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
+import useAxios from "../../hooks/useAxios";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
   body: yup.string().required("Please enter your message"),
-  tags: yup.array().nullable(),
+  tags: yup.string(),
   media: yup.string().nullable().notRequired(),
 });
 
@@ -32,11 +33,19 @@ export default function NewPost() {
 	});
 
   const navigate = useNavigate();
+  const http = useAxios();
 
-  async function sendPost(schema) {
+  async function sendPost(data) {
+    const formData = {
+      title: data.title,
+      body: data.body,
+      tags: data.tags.split(","),
+      media: data.media,
+    };
+
     const options = {
       method: "POST",
-      body: JSON.stringify(schema),
+      body: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
@@ -48,28 +57,19 @@ export default function NewPost() {
 
       try {
           const response = await fetch(`${BASE_URL}/social/posts`, options)
+          // const response = await http.post(`/social/posts`, JSON.stringify(formData));
           const data = await response.json();
-          setPostError(postError);
           console.log(data)
 
-          if (data.status) {
-            return <FormError>{postError}</FormError>         
-          } else {
-            navigate("/"); 
-          }
-
         } catch (error) {
-          console.log("Error:" + error);
+          console.log(error);
+          // setPostError(error);
         } finally {
           setSubmitting(false);
-          // navigate("/");
-          // window.location.reload(); 
+          navigate("/");
+          window.location.reload(); 
         }
       }
-
-        // if (json.error) {
-        //     displayMessage("warning", "Invalid login details", ".message-container");
-        // }
 
         return (
           <>
@@ -102,7 +102,7 @@ export default function NewPost() {
                 <Form.Group className="mb-3" controlId="formGroupTags">
                   <input
                     {...register("tags")}
-                    placeholder="Tags"
+                    placeholder="Tags. Separate with ,"
                     />
                   {errors.tags && <FormError>{errors.tags.message}</FormError>}
                 </Form.Group>
