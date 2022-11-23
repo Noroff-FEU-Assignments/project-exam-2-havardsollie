@@ -2,6 +2,7 @@
   width: 80%;
   margin: 0 auto;
   padding: 2%;
+  margin-top: 2%;
   & h2 {
     color: $green;
   }
@@ -16,13 +17,18 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 5px;
 }
 
 .authorLinksPost img {
   border-radius: 50px;
   background-image: url("../../../assets/circle.png");
   background-position: center;
+}
+
+.postDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items:baseline;
 }
 
 .interactions {
@@ -87,5 +93,11 @@
 
   .commentSection {
     width: 100%;
+  }
+
+  .authorLinksPost {
+    & h3 {
+      display: none;
+    }
   }
 }

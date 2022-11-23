@@ -114,6 +114,7 @@ export default function NewPost() {
                     />
                   {errors.media && <FormError>{errors.media.message}</FormError>}
                 </Form.Group>
+                <hr />
                 {postError && <FormError>{postError}</FormError>}
                 <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(sendPost)}>{submit ? "Sending..." : "Send"}</Button>
               </fieldset>

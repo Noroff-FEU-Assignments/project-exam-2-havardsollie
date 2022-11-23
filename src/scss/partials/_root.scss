@@ -19,6 +19,12 @@ body {
   background-color: rgb(228, 240, 228);
 }
 
+footer {
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+}
+
 // background-image:  linear-gradient(135deg, #9AB77C 25%, transparent 25%), linear-gradient(225deg, #9AB77C 25%, transparent 25%), linear-gradient(45deg, #9AB77C 25%, transparent 25%), linear-gradient(315deg, #9AB77C 25%, #e5e5f7 25%);
 // background-position:  10px 0, 10px 0, 0 0, 0 0;
 // background-repeat: repeat;

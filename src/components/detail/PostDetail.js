@@ -77,12 +77,18 @@ function PostDetails() {
 					<h2>{post.title}</h2>
 					<hr />
 				</section>
-				<h5>{post.body}</h5>
+				<section className="postDetails">
+					<div>
+						<h5>{post.body}</h5>
+					</div>
+					<div className="tags">
 				{post.tags && post.tags.map((tag) => (
-					
+					<div>
 						<h6>#{tag}</h6>
-					
+					</div>
 				))}
+				</div>
+				</section>
 			</section>
 			<hr />
 

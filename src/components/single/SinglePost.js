@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { BsChat } from "react-icons/bs";
 import AuthContext from "../../context/AuthContext";
 
-function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, author, name, avatar }) {
+function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, tags, name, avatar }) {
 
 const [auth] = useContext(AuthContext);
 
@@ -28,9 +28,11 @@ const [auth] = useContext(AuthContext);
             <h2 className="postTitle">{title}</h2>
 					<hr />
 				</section>
-       <div className="postText">
-         <h5>{body}</h5>
-        </div>
+        <section className="postDetails">
+					<div>
+						<h5>{body}</h5>
+					</div>
+				</section>
        </Card.Body>
        <section>
         <div className="feedReactions">
@@ -48,15 +50,17 @@ const [auth] = useContext(AuthContext);
         <h6><BsChat /></h6>
         <h6>{commentsNumber}</h6>
         </div>
-        <hr />
-        <div className="comments">
         {comments ? comments.map((com) => (
+
+        <div className="comments">
+        
 					<div className="commentsInner">
           <Link to={`/profile/${com.owner}`}><p>{com.owner}:</p></Link>
           <p>{com.body}</p>
         </div>
+        </div>
       )):  <></>}
-      </div>
+      
       </section>
        </Card.Body>
     </Card>

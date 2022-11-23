@@ -12,6 +12,7 @@ import ProfileDetails from "./components/detail/ProfileDetail";
 import MyProfile from "./components/profiles/MyProfile";
 import EditPost from "./components/posts/EditPost";
 import ListOfProfiles from "./components/profiles/AllProfiles";
+import Footer from "./layout/Footer";
 
 function App() {
 	return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
 				</Routes>
 			</div>
+			<Footer />
 		</Router>
     </AuthProvider>
 	);
