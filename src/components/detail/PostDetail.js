@@ -6,6 +6,7 @@ import ReactToPost from "../posts/ReactToPost";
 import CommentOnPost from "../posts/CommentPost";
 import AuthContext from "../../context/AuthContext";
 import EditPost from "../posts/EditPost";
+import CommentOnCom from "../posts/CommentCom";
 
 function PostDetails() {
 	const [post, setPost] = useState(null);
@@ -18,9 +19,9 @@ function PostDetails() {
   const { id } = useParams();
 	// const { name } useParams();
  
-  if (!id) {
-   history.push("/");
-  }
+  // if (!postID) {
+  //  history.push("/");
+  // }
 
   const url = BASE_URL + "/social/posts/" + id + "?_author=true&_comments=true&_reactions=true";
 
@@ -104,12 +105,19 @@ function PostDetails() {
 				<hr />
 				<div className="comments">
 					<h6>Comments {post._count.comments}</h6>
-					{post.comments && post.comments.map((comment) => (
+					{post.comments && post.comments.map((comment) => {
+						const { id, owner, body, replyToId } = comment;
+						return <>
 					<div className="commentsInner">
-						<Link to={`/profile/${comment.owner}`}><p>{comment.owner}:</p></Link>
-						<p>{comment.body}</p>
+						<Link to={`/profile/${owner}`}><p>{owner}:</p></Link>
+						<p>{body}</p>
+						<p>{id}</p>
+						{replyToId ? <p>Reply to {replyToId}</p> : <></> } 
+						<CommentOnCom key={id} />
+						{console.log(id)}
 					</div>
-				))}
+					</>
+				})}
 				</div>
 				<CommentOnPost />
 			<hr />
