@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 import NewPost from "../posts/NewPost";
 import coffeeman from "../../assets/coffeeman.png";
 
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import FollowingFeed from "../posts/FollowingPosts";
+
 function ListOfPosts() {
 	const [posts, setPosts] = useState([]);
 	// const [loading, setLoading] = useState(true);
@@ -64,14 +68,24 @@ function ListOfPosts() {
           />
            <h2>community</h2>
           </section>
-			{posts && posts.map((post) => {
-        const { id, title, body, media, _count, comments, reactions, author, avatar } = post;
+          <Tabs
+      defaultActiveKey="all"
+      className="tabWrap"
+    >
+    <Tab eventKey="all" title="All posts" className="tabKey">
+			{posts.map((post) => {
+        const { id, title, body, media, _count, comments, reactions, author, tags } = post;
 				return <>
         <div className="feed-wrapper">
-          <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} avatar={author.avatar} comments={comments} commentsNumber={_count.comments} reactions={reactions} reactionsNumber={_count.reactions} />
+          <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} avatar={author.avatar} tags={tags} comments={comments} commentsNumber={_count.comments} reactions={reactions} reactionsNumber={_count.reactions} />
         </div>
         </>
 			})}
+      </Tab>
+      <Tab eventKey="following" title="Following" className="tabKey">
+        <FollowingFeed />
+      </Tab>
+      </Tabs>
 		</>
 	);
 }
