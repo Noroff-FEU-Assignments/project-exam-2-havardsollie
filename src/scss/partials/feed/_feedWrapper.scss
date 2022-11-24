@@ -27,6 +27,8 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  background: rgb(255, 255, 255);
+  border: 5px solid $green;
   & img {
 
   }
@@ -40,12 +42,14 @@
 .tabWrap {
   display: flex;
   justify-content: center;
+  margin-top: 2%;
   & .nav-link {
-    color: black;
+    color: white;
     
   }
-  & .nav-link:active {
+  & button:active {
     background: $green-light;
+    border: 1px solid $green;
   }
 }
 
@@ -112,6 +116,20 @@
 @media (max-width: 992px) {
   .post-container {
     display: block;
+  }
+
+  .feedHeading {
+    display: block;
+    text-align: center;
+    width: 80%;
+    background: rgb(255, 255, 255);
+    border: 3px solid $green;
+    & img {
+  
+    }
+    & h2 {
+      text-align: center;
+    }
   }
 
 }

@@ -13,6 +13,7 @@ import AuthContext from "../../context/AuthContext";
 import logo from "../../assets/caffeine_logo.png";
 import Form from 'react-bootstrap/Form';
 import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
 
 
 // const url = BASE_URL + TOKEN_PATH;
@@ -72,7 +73,7 @@ export default function LoginForm() {
 
         return (
           <>
-          <Form onSubmit={handleSubmit(doLogin)} className="enterForm">
+          <Form className="enterForm">
               <fieldset disabled={submit}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                   <input
@@ -93,7 +94,7 @@ export default function LoginForm() {
                 </Form.Group>
                 <hr />
                 {loginError && <FormError>{loginError}</FormError>}
-                <button>{submit ? "Logging in" : "Login"}</button>
+                <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(doLogin)}>{submit ? "Brewing coffee..." : "Login"}</Button>
               </fieldset>
             </Form>
             </>

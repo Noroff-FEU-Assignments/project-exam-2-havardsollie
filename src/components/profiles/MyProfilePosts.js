@@ -90,15 +90,14 @@ function MyProfilePosts() {
         <h6><BsChat /></h6>
         <h6>{post._count.comments}</h6>
         </div>
-        <hr />
-        <div className="comments">
         {post.comments ? post.comments.map((com) => (
+					<div className="comments">
 					<div className="commentsInner">
           <Link to={`/profile/${com.owner}`}><p>{com.owner}:</p></Link>
           <p>{com.body}</p>
         </div>
+				</div>
       )):  <></>}
-      </div>
       </section>
        </Card.Body>
 				 </Card>

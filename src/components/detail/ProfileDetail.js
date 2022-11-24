@@ -10,6 +10,8 @@ import MyProfilePosts from "../profiles/MyProfilePosts";
 import UpdateMedia from "../profiles/UpdateMedia";
 import DefaultAvatar from "../../common/DefaultAvatar";
 import NewPost from "../posts/NewPost";
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 function ProfileDetails() {
 	const [profile, setProfile] = useState(null);
@@ -96,56 +98,77 @@ function ProfileDetails() {
 				<img src={profile.avatar} width={300} height={300}></img>
 				<h3>{profile.name}</h3>
 				<h6>{profile.email}</h6>
-			</section>
-
-			<div class="vr" className="profileLines" />
-			<section className="profileInfo">
-				<Card.Body className="middle">
-					<div className="followContainer">
-						<h5>Followers: {profile._count.followers}</h5>
-						<div className="followersList">
-					{followers && followers.map((follower) => (
-						<div>
-							{follower.avatar ?
-						<Link to={`/profile/${follower.name}`}><img src={follower.avatar} width={50} height={50}></img></Link>
-						: <DefaultAvatar />	
-						}
-						</div>
-					))}
-					</div>
-					<hr />
-					<h5>Following: {profile._count.following}</h5>
-					<div className="followingList">
-					{following && following.map((follow) => (
-						<div>
-							{follow.avatar ?
-							<Link to={`/profile/${follow.name}`}><img src={follow.avatar} width={50} height={50}></img></Link>
-						: <Link to={`/profile/${follow.name}`}><p>{follow.name}</p></Link>
-						}
-						</div>
-					))}
-					</div>
-				</div>
-				</Card.Body>
-				<div class="vr" className="profileLines"/>
 				<Card.Body className="upper">
 					{profile.name === auth.name ?
-					<div><UpdateMedia /></div>
+					<><div><UpdateMedia /></div><hr /><div><NewPost /></div></>
 					: <div>{Object.values(followers).find(follower => (follower.name === auth.name)) ? <UnfollowButton /> : <FollowButton />}</div>
 				}
 				</Card.Body>
 			</section>
-		</Card>
-		<section className="profileBanner">
+			<section className="profileInfo">
+				<Card.Body className="middle">
+					{/* <div className="followContainer"> */}
+						{/* <h5>Followers: {profile._count.followers}</h5> */}
+					{/* <hr /> */}
+					{/* <h5>Following: {profile._count.following}</h5> */}
+				{/* </div> */}
+				<section className="profileBanner">
 				<img src={profile.banner} width="100%" height="auto"></img>
 			</section>
+				</Card.Body>
+				{/* <div class="vr" className="profileLines"/> */}
+			</section>
+		</Card>
+		<Tabs
+      defaultActiveKey="posts"
+      className="tabWrap"
+    >
+    <Tab eventKey="posts" title="Posts" className="tabKey">
 		<Card className="profilePostSection">
 			{profile.name === auth.name ?
 			<><h4>My posts</h4><MyProfilePosts /></>
 			: <><h4>{profile.name}'s posts</h4><ProfilePosts /></>
 			}
-			
 			</Card>
+			</Tab>
+      <Tab eventKey="following" title="Following" className="tabKey">
+				<div className="followContainer">
+				<h3>Following: {profile._count.following}</h3>
+				<div className="followingList">
+					{following && following.map((follow) => (
+						<div className="follower">
+							{follow.avatar ?
+							<Link to={`/profile/${follow.name}`}>
+								<img src={follow.avatar} width={100} height={100}></img>
+								<h5>{follow.name}</h5>
+							</Link>
+						: <Link to={`/profile/${follow.name}`}><p>{follow.name}</p></Link>
+						}
+						</div>
+					))}
+					</div>
+					</div>
+					</Tab>
+				<Tab eventKey="followers" title="Followers" className="tabKey">
+					<div className="followContainer">
+					<h3>Followers: {profile._count.followers}</h3>
+				<div className="followersList">
+					{followers && followers.map((follower) => (
+						<div className="follower">
+							{follower.avatar ?
+						<Link to={`/profile/${follower.name}`}>
+							<img src={follower.avatar} width={100} height={100}></img>
+							<h5>{follower.name}</h5>
+							</Link>
+						: <DefaultAvatar />	
+						}
+						</div>
+					))}
+					</div>
+					</div>
+				</Tab>
+      </Tabs>
+			
 			</>
    );
   }

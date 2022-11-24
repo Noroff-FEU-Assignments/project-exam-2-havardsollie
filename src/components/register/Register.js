@@ -62,7 +62,7 @@ async function registerUser(schema) {
         // }
 
         return (
-          <form onSubmit={handleSubmit(registerUser)} className="enterForm">
+          <form className="enterForm">
             {registerError && <FormError>{registerError}</FormError>}
       
             <fieldset disabled={submit}>
@@ -88,7 +88,7 @@ async function registerUser(schema) {
             {/* <p>{errors.password.message}</p> */}
             <hr />
       
-            <Button variant="outline-secondary" className="newPost">{submit ? "Registering user" : "Register"}</Button>
+            <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(registerUser)}>{submit ? "Registering user" : "Register"}</Button>
             {/* <div>{errors ? <p>{registerError}</p> : "User created"}</div> */}
             </fieldset>
           </form>

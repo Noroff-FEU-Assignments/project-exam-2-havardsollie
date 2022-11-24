@@ -73,7 +73,7 @@ function ListOfPosts() {
       className="tabWrap"
     >
     <Tab eventKey="all" title="All posts" className="tabKey">
-			{posts.map((post) => {
+			{posts && posts.map((post) => {
         const { id, title, body, media, _count, comments, reactions, author, tags } = post;
 				return <>
         <div className="feed-wrapper">

@@ -2,6 +2,9 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
+  & h1, h2 {
+    color: white;
+  }
 }
 
 .formPage {
@@ -21,7 +24,7 @@
     color: white;
     font-weight: bolder;
     width: 90%;
-    padding: 2px;
+    padding: 10px;
   }
   & input::placeholder {
     color: white;
@@ -29,18 +32,10 @@
   & input:focus {
     background: $green-light;
     color: white;
+    border: none;
   }
 
-  & button {
-    border: none;
-    background-color: $green-dark;
-    color: white;
-    margin-top: 10%;
-    border: $green;
-    border-radius: 50%;
-    border-style: double;
-    padding: 10px;
-  }
+
   & button:hover {
     background-color: white;
     color: $green-dark;

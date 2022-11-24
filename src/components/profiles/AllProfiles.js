@@ -11,7 +11,8 @@ function ListOfProfiles() {
   const [ auth, setAuth ] = useContext(AuthContext);
   const navigate = useNavigate();
   const http = useAxios();
-  const url = "/social/profiles";
+  // let offset = 0;
+  const url = "/social/profiles?sortOrder=asc";
   // const usersURL = "/social/profiles?limit=100&offset=100";
   // const usersNextURL = "/social/profiles?limit=100&offset=200";
 
@@ -48,7 +49,7 @@ function ListOfProfiles() {
   //       try {
   //           const response = await http.get(usersURL, usersNextURL)
   //           console.log(response.data);
-  //           setProfiles(response.data);
+  //           setProfiles.append(response.data);
   //         } catch (error) {
   //           console.log("error", error);
 
@@ -70,7 +71,7 @@ function ListOfProfiles() {
   //       try {
   //           const response = await http.get(usersNextURL)
   //           console.log(response.data);
-  //           setProfiles(response.data);
+  //           setProfiles.append(response.data);
   //         } catch (error) {
   //           console.log("error", error);
 

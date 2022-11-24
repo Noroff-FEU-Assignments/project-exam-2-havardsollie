@@ -32,6 +32,8 @@ export default function ReactToPost() {
       setEmoji(response);
     } catch (error) {
       console.log(error)
+    } finally {
+      window.location.reload();
     }
   }
 
