@@ -51,8 +51,20 @@ function Navigate() {
 			{auth ? (
 				<>
         <div className="nav-middle">
-          <Nav.Link><Link to="/allprofiles"><BsPeople /></Link></Nav.Link>
-					<Nav.Link><Link to={`/profile/${auth.name}`}><BsPersonCircle /></Link></Nav.Link>
+          <div className="navLink">
+          <Nav.Link>
+            <Link to="/allprofiles"><BsPeople />
+            <h5>All profiles</h5>
+            </Link>
+            </Nav.Link>
+          </div>
+          <div className="navLink">
+					<Nav.Link>
+            <Link to={`/profile/${auth.name}`}><BsPersonCircle />
+            <h5>My profile</h5>
+            </Link>
+            </Nav.Link>
+          </div>
         </div>
         <div className="nav-right">
           <Nav.Link><BsDoorOpen className="logOut" onClick={logout} /></Nav.Link>

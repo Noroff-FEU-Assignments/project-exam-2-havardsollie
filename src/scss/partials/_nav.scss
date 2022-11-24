@@ -44,6 +44,12 @@ h1 {
   }
 }
 
+.navLink {
+  & h5 {
+    display: none;
+  }
+}
+
 .authorLinks, .comments a {
   color: $green;
 }
@@ -73,6 +79,13 @@ h1 {
 
   .nav-middle {
     display: block;
+  }
+
+  .navLink {
+    display: flex;
+    & h5 {
+      display: inline;
+    }
   }
 
   .nav-right {

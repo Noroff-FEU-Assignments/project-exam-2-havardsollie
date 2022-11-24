@@ -8,6 +8,10 @@ export default function LoginPage() {
 		<div className="formPage">
 			<Card.Img src={logo} />
       <hr />
+			<div className="welcomeText">
+				<h2>Back for some</h2><h1>coffee</h1><h2>?</h2>
+			</div>
+      <hr />
 			<LoginForm />
 		</div>
 	);
