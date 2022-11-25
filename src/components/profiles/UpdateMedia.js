@@ -53,7 +53,6 @@ export default function UpdateMedia() {
         } finally {
           setSubmitting(false);
           navigate(`/profile/${auth.name}`);
-          window.location.reload();
         }
       }
 

@@ -60,7 +60,6 @@ export default function NewPost() {
         } finally {
           setSubmitting(false);
           navigate("/");
-          window.location.reload(); 
         }
       }
 

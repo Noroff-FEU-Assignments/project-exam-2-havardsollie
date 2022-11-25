@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Form from 'react-bootstrap/Form';
@@ -16,7 +16,7 @@ export default function ReactToPost() {
 	const { register, handleSubmit, reset, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
 	});
-
+  const navigate = useNavigate();
   let { id } = useParams();
   let symbol = emoji;
   const http = useAxios();
@@ -32,7 +32,7 @@ export default function ReactToPost() {
     } catch (error) {
       console.log(error)
     } finally {
-      window.location.reload();
+      navigate("/detail/" + id)
     }
   }
 

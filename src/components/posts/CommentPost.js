@@ -31,9 +31,6 @@ export default function CommentOnPost() {
     try {
       const response = await http.post(url, data);
       console.log(response.data);
-      if (data.media === "") {
-        data.media = null;
-      }
     } catch (error) {
       console.log(error)
       setCommentError(error)

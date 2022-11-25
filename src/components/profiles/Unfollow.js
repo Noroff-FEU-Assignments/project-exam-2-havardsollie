@@ -25,7 +25,6 @@ function UnfollowButton() {
         setError(error);
       } finally {
         history(`/profile/${name}`);
-        window.location.reload();
       }
       }
 

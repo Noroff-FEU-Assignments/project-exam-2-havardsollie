@@ -27,7 +27,6 @@ function FollowButton() {
         setError(error);
       } finally {
         history(`/profile/${name}`);
-        window.location.reload();
       }
       }
 

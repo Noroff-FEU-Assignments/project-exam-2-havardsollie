@@ -49,7 +49,6 @@ export default function EditPost({ title, body, tags, media }) {
       setUpdateError(error.toString())
     } finally {
       navigate(`/detail/${id}`)
-      window.location.reload();
     }
   }
 
