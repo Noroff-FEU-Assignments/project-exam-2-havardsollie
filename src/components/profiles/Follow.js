@@ -6,6 +6,7 @@ import useAxios from "../../hooks/useAxios";
 import { Button } from "react-bootstrap";
 
 function FollowButton() {
+	const [follow, setFollow] = useState(false);
 	const [error, setError] = useState(null);
 
   let history = useNavigate();

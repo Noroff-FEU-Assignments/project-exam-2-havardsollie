@@ -6,7 +6,9 @@ import useAxios from "../../hooks/useAxios";
 import { Button } from "react-bootstrap";
 
 function UnfollowButton() {
+	const [unfollow, setUnfollow] = useState(false);
 	const [error, setError] = useState(null);
+
   let history = useNavigate();
   const { name } = useParams();
   const url = BASE_URL + "/social/profiles/" + name + "/unfollow";
