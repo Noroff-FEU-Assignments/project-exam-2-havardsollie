@@ -35,7 +35,7 @@ export default function CommentOnPost() {
       console.log(error)
       setCommentError(error)
     } finally {
-      navigate("/detail/" + id)
+      navigate(`/detail/${id}`)
     }
   }
 

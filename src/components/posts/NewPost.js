@@ -59,7 +59,7 @@ export default function NewPost() {
           console.log(error);
         } finally {
           setSubmitting(false);
-          navigate("/");
+          navigate(`/`);
         }
       }
 

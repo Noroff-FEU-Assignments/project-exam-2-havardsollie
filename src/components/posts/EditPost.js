@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,8 +10,10 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
 import { schema } from "./Schema";
+import AuthContext from "../../context/AuthContext";
 
 export default function EditPost({ title, body, tags, media }) {
+  const [auth] = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -48,7 +50,7 @@ export default function EditPost({ title, body, tags, media }) {
     } catch (error) {
       setUpdateError(error.toString())
     } finally {
-      navigate(`/detail/${id}`)
+      navigate(`/profile/${auth.name}`);
     }
   }
 

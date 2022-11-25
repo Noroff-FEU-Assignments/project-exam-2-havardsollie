@@ -32,7 +32,7 @@ export default function ReactToPost() {
     } catch (error) {
       console.log(error)
     } finally {
-      navigate("/detail/" + id)
+      navigate(`/detail/${id}`)
     }
   }
 
