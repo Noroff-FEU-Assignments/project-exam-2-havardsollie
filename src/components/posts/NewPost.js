@@ -1,17 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import axios from "axios";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
-// import AuthContext from "../../context/AuthContext";
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
-import useAxios from "../../hooks/useAxios";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
@@ -21,7 +18,6 @@ const schema = yup.object().shape({
 });
 
 export default function NewPost() {
-  // const [auth, setAuth] = useContext(AuthContext);
 	const [submit, setSubmitting] = useState(false);
 	const [postError, setPostError] = useState(null);
   const [show, setShow] = useState(false);
@@ -33,7 +29,6 @@ export default function NewPost() {
 	});
 
   const navigate = useNavigate();
-  const http = useAxios();
 
   async function sendPost(data) {
     const formData = {
@@ -57,13 +52,11 @@ export default function NewPost() {
 
       try {
           const response = await fetch(`${BASE_URL}/social/posts`, options)
-          // const response = await http.post(`/social/posts`, JSON.stringify(formData));
           const data = await response.json();
           console.log(data)
 
         } catch (error) {
           console.log(error);
-          // setPostError(error);
         } finally {
           setSubmitting(false);
           navigate("/");

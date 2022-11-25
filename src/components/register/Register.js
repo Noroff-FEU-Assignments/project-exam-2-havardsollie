@@ -1,17 +1,10 @@
-// import { displayMessage } from "./utils/displayMessage.js";
-// import { saveTokenKey, saveThisUser } from "./settings/storage.js";
-// import menu from "./utils/createMenu.js";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import axios from "axios";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
 import { Button } from "react-bootstrap";
-
-
-// const url = BASE_URL + TOKEN_PATH;
 
 const schema = yup.object().shape({
 	name: yup.string().required("Please enter your username"),
@@ -44,12 +37,6 @@ async function registerUser(schema) {
         const data = await response.json();
         console.log("response", data);
         setRegisterError(data.errors[0].message);
-
-        // if (json.user) {
-
-        //     saveTokenKey(data.jwt);
-        //     saveThisUser(data.user);
-        // }
       } catch (error) {
         console.log("error", error);
       } finally {
@@ -57,17 +44,13 @@ async function registerUser(schema) {
       }
     }
 
-        // if (json.error) {
-        //     displayMessage("warning", "Invalid login details", ".message-container");
-        // }
-
         return (
           <form className="enterForm">
             {registerError && <FormError>{registerError}</FormError>}
       
             <fieldset disabled={submit}>
             <input {...register("name")} placeholder="Username" required />
-            {/* <p>{errors.username.message}</p> */}
+            {errors.name && <FormError>{errors.name.message}</FormError>}
             <hr />
 
             <input
@@ -76,7 +59,7 @@ async function registerUser(schema) {
               type="email"
               required
             />
-            {/* <p>{errors.email.message}</p> */}
+            {errors.email && <FormError>{errors.email.message}</FormError>}
             <hr />
       
             <input
@@ -85,11 +68,10 @@ async function registerUser(schema) {
               type="password"
               required
             />
-            {/* <p>{errors.password.message}</p> */}
+            {errors.password && <FormError>{errors.password.message}</FormError>}
             <hr />
       
             <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(registerUser)}>{submit ? "Registering user" : "Register"}</Button>
-            {/* <div>{errors ? <p>{registerError}</p> : "User created"}</div> */}
             </fieldset>
           </form>
         );

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { BASE_URL } from "../../api/Api";
 import { Card } from "react-bootstrap";
 import ReactToPost from "../posts/ReactToPost";
@@ -14,14 +14,7 @@ function PostDetails() {
 	const [error, setError] = useState(null);
 	const [auth] = useContext(AuthContext);
 
-  let history = useNavigate();
-
   const { id } = useParams();
-	// const { name } useParams();
- 
-  // if (!postID) {
-  //  history.push("/");
-  // }
 
   const url = BASE_URL + "/social/posts/" + id + "?_author=true&_comments=true&_reactions=true";
 

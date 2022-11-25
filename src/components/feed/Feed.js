@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { BASE_URL } from "../../api/Api";
-// import Heading from "../layout/Heading";
 import SinglePost from "../single/SinglePost";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -13,9 +12,8 @@ import FollowingFeed from "../posts/FollowingPosts";
 
 function ListOfPosts() {
 	const [posts, setPosts] = useState([]);
-	// const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-  const [ auth, setAuth ] = useContext(AuthContext);
+	const [error] = useState(null);
+  const [auth] = useContext(AuthContext);
   const navigate = useNavigate();
 
 	useEffect(function () {
@@ -44,10 +42,6 @@ function ListOfPosts() {
         }
 		fetchData();
 	}, []);
-
-	// if (loading) {
-	// 	return <div>Loading...</div>;
-	// }
 
 	if (error) {
 		return <div>An error occured: {error}</div>;

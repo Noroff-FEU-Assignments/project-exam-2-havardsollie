@@ -1,6 +1,6 @@
-import { useState, useContext, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Form from 'react-bootstrap/Form';
@@ -19,7 +19,6 @@ export default function ReactToPost() {
 
   let { id } = useParams();
   let symbol = emoji;
-  const navigate = useNavigate();
   const http = useAxios();
   const url = `/social/posts/${id}/react/${symbol}`
   

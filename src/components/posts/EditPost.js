@@ -1,27 +1,20 @@
-import { useState, useContext, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
-// import AuthContext from "../../context/AuthContext";
 import Form from 'react-bootstrap/Form';
 import DeletePost from "./DeletePost";
-// import useAxios from "../../hooks/useAxios";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
 import { schema } from "./Schema";
 
 export default function EditPost({ title, body, tags, media }) {
-  const [post, setPost] = useState([]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [updated, setUpdated] = useState(false);
-  const [fetchingPost, setFetchingPost] = useState(true);
-  const [updatingPost, setUpdatingPost] = useState(false);
-  const [fetchError, setFetchError] = useState(null);
   const [updateError, setUpdateError] = useState(null);
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
@@ -30,8 +23,6 @@ export default function EditPost({ title, body, tags, media }) {
 
   let { id } = useParams();
   const navigate = useNavigate();
-  // const http = useAxios();
-  // const url = `/social/posts/${id}`
 
   async function onSubmit(data) {
     const formData = {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { BASE_URL } from "../../api/Api";
 import { Card } from "react-bootstrap";
 import { BsChat } from "react-icons/bs";
@@ -10,8 +10,6 @@ function ProfilePosts() {
 	const [error, setError] = useState(null);
 
   const { name } = useParams();
-
-
   const url = BASE_URL + "/social/profiles/" + name + "/posts?_author=true&_comments=true&_reactions=true";
 
 	useEffect(function () {

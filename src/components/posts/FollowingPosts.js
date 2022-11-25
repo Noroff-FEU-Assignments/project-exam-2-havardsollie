@@ -1,6 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import AuthContext from "../../context/AuthContext";
+import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import SinglePost from "../single/SinglePost";
 
@@ -8,7 +6,6 @@ function FollowingFeed() {
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	const [auth] = useContext(AuthContext);
 
   const url = "/social/posts/following?_author=true&_comments=true&_reactions=true";
   const http = useAxios();

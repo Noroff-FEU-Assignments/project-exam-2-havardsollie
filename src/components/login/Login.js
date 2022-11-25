@@ -1,18 +1,12 @@
-// import { displayMessage } from "./utils/displayMessage.js";
-// import { saveTokenKey, saveThisUser } from "./settings/storage.js";
-// import menu from "./utils/createMenu.js";
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import axios from "axios";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
 import AuthContext from "../../context/AuthContext";
-import logo from "../../assets/caffeine_logo.png";
 import Form from 'react-bootstrap/Form';
-import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
 
 
@@ -66,10 +60,6 @@ export default function LoginForm() {
           setSubmitting(false);
         }
       }
-
-        // if (json.error) {
-        //     displayMessage("warning", "Invalid login details", ".message-container");
-        // }
 
         return (
           <>

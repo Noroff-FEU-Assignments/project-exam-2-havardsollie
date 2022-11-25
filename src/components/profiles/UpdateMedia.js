@@ -1,10 +1,8 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import axios from "axios";
 import FormError from "../../common/FormError";
 import { BASE_URL } from "../../api/Api";
 import AuthContext from "../../context/AuthContext";
@@ -29,9 +27,7 @@ export default function UpdateMedia() {
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
 	});
-
   const navigate = useNavigate();
-  const { name } = useParams();
   const url = BASE_URL + "/social/profiles/" + auth.name + "/media";
 
   async function updateMedia(schema) {
@@ -60,10 +56,6 @@ export default function UpdateMedia() {
           window.location.reload();
         }
       }
-
-        // if (json.error) {
-        //     displayMessage("warning", "Invalid login details", ".message-container");
-        // }
 
         return (
           <>

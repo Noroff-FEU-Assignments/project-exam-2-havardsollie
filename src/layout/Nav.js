@@ -1,31 +1,15 @@
-import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-// import AuthenticatedNav from "./AuthNav";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Button } from "react-bootstrap";
 import logo from "../assets/caffeine_logo.png";
-import { BsPersonCircle } from "react-icons/bs";
-import { BsPeople } from "react-icons/bs";
-import { BsDoorOpen } from "react-icons/bs";
+import { BsPersonCircle, BsPeople, BsDoorOpen } from "react-icons/bs";
 
 function Navigate() {
-
   const [auth, setAuth] = useContext(AuthContext);
-  // const [isHovering, setIsHovering] = useState(false);
   const navigate = useNavigate();
-
-  // const handleMouseOver = () => {
-  //   setIsHovering(true);
-  // };
-
-  // const handleMouseOut = () => {
-  //   setIsHovering(false);
-  // };
 
   function logout() {
     setAuth(null);

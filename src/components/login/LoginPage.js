@@ -1,4 +1,3 @@
-// import Heading from "../layout/Heading";
 import LoginForm from "./Login";
 import logo from "../../assets/caffeine_logo.png"
 import { Card } from "react-bootstrap";

@@ -67,29 +67,8 @@ function ProfileDetails() {
 	}
 
 	const followers = profile.followers;
-	console.log(followers)
 	const following = profile.following;
-	console.log(following)
-
-	console.log(followers);
-	console.log(auth.name)
-
-	// const checkFollowers = (auth) => {
-	// 	if (auth) {
-	// 		for (let i = 0; i < followers.length; i++) {
-	// 			if (followers[i].includes(auth.name)) {
-	// 				return auth.name;
-	// 			}
-	// 		}
-	// 	}
-	// 	return false;
-	// }
-
 	const isFollowingUser = auth.name;
-
-	// if (profile.name === auth.name) {
-	// 	history("/profile")
-	// }
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../api/Api";
 import { Card } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
@@ -11,10 +10,6 @@ function MyProfilePosts() {
 	const [profilePosts, setProfilePosts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-
-  const { name } = useParams();
-
-
   const url = BASE_URL + "/social/profiles/" + auth.name + "/posts?_author=true&_comments=true&_reactions=true";
 
 	useEffect(function () {
