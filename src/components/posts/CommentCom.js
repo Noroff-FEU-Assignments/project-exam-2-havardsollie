@@ -16,7 +16,6 @@ const schema = yup.object().shape({
 });
 
 export default function CommentOnCom( { key }) {
-  const [commentID, setComment] = useState();
   const [commentError, setCommentError] = useState(null);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -37,7 +36,6 @@ export default function CommentOnCom( { key }) {
     try {
       const response = await http.post(url, data);
       console.log(response.data);
-      setComment(response.data);
     } catch (error) {
       console.log(error)
       setCommentError(error)
