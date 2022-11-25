@@ -114,6 +114,11 @@
 }
 
 @media (max-width: 992px) {
+
+  .feed-wrapper {
+    max-width: 95%;
+  }
+
   .post-container {
     display: block;
   }

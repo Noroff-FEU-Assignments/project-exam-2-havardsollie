@@ -87,8 +87,18 @@
 }
 
 @media (max-width: 992px) {
+
+  .postWrapper {
+    width: 100%;
+  }
+
   .reactForm {
     width: 100%;
+  }
+
+  .reactions {
+    width: 100%;
+    justify-content: left;
   }
 
   .commentSection {
