@@ -5,7 +5,6 @@ import RegisterPage from "./components/register/RegisterPage";
 import LoginPage from "./components/login/LoginPage";
 import PostDetails from "./components/detail/PostDetail";
 import { AuthProvider } from "./context/AuthContext";
-import AuthenticatedNav from "./layout/AuthNav";
 import Navigate from "./layout/Nav";
 import "./scss/style.scss"
 import ProfileDetails from "./components/detail/ProfileDetail";
