@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 export default function LoginPage() {
 	return (
 		<div className="formPage">
-			<Card.Img src={logo} />
+			<Card.Img src={logo} alt="Coffeine logo" />
       <hr />
 			<div className="welcomeText">
 				<h2>Back for some</h2><h1>coffee</h1><h2>?</h2>

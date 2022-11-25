@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { Card, CardImg } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsChat } from "react-icons/bs";
 import AuthContext from "../../context/AuthContext";
@@ -16,14 +16,14 @@ const [auth] = useContext(AuthContext);
         {media ?
         <Card.Body className="post-container">
          <div className="postImg">
-          <img src={media} width="100%" height="auto"></img>
+          <img src={media} alt={title} width="100%" height="auto"></img>
           </div>
           </Card.Body>
           : <></>
         }
        <Card.Body>
        <section className="authorLinksPost">
-					<Link to={`/profile/${name}`}><img src={avatar} width={50} height={50}></img></Link>
+					<Link to={`/profile/${name}`}><img src={avatar} alt={name} width={50} height={50}></img></Link>
 					<Link to={`/profile/${name}`}><h3>{name}</h3></Link>
             <h2 className="postTitle">{title}</h2>
 					<hr />

@@ -114,7 +114,7 @@ export default function NewPost() {
             </Form>
             </Modal.Body>
             <Modal.Footer>
-              <img src={coffeeman} width="auto" height={100}></img>
+              <img src={coffeeman} alt="Man drinking coffee" width="auto" height={100}></img>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>

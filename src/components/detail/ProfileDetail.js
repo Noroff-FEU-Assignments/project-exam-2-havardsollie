@@ -68,13 +68,12 @@ function ProfileDetails() {
 
 	const followers = profile.followers;
 	const following = profile.following;
-	const isFollowingUser = auth.name;
 
   return (
     <>
 		<Card className="profileWrapper">
 			<section className="profileAvatar">
-				<img src={profile.avatar} width={300} height={300}></img>
+				<img src={profile.avatar} alt={profile.name} width={300} height={300}></img>
 				<h3>{profile.name}</h3>
 				<h6>{profile.email}</h6>
 				<Card.Body className="upper">
@@ -92,7 +91,7 @@ function ProfileDetails() {
 					{/* <h5>Following: {profile._count.following}</h5> */}
 				{/* </div> */}
 				<section className="profileBanner">
-				<img src={profile.banner} width="100%" height="auto"></img>
+				<img src={profile.banner} alt={profile.name} width="100%" height="auto"></img>
 			</section>
 				</Card.Body>
 				{/* <div class="vr" className="profileLines"/> */}
@@ -118,7 +117,7 @@ function ProfileDetails() {
 						<div className="follower">
 							{follow.avatar ?
 							<Link to={`/profile/${follow.name}`}>
-								<img src={follow.avatar} width={100} height={100}></img>
+								<img src={follow.avatar} alt={follow.name} width={100} height={100}></img>
 								<h5>{follow.name}</h5>
 							</Link>
 						: <Link to={`/profile/${follow.name}`}><p>{follow.name}</p></Link>
@@ -136,7 +135,7 @@ function ProfileDetails() {
 						<div className="follower">
 							{follower.avatar ?
 						<Link to={`/profile/${follower.name}`}>
-							<img src={follower.avatar} width={100} height={100}></img>
+							<img src={follower.avatar} alt={follower.name} width={100} height={100}></img>
 							<h5>{follower.name}</h5>
 							</Link>
 						: <DefaultAvatar />	

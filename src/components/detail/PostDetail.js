@@ -60,13 +60,13 @@ function PostDetails() {
 			<section className="postBody">
 				{post.media ? 
 				<>
-				<img src={post.media} width="100%" height="auto"></img>
+				<img src={post.media} alt={post.title} width="100%" height="auto"></img>
 				<hr />
 				</>
 				: <></>
 				}
 				<section className="authorLinksPost">
-					<Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} width={50} height={50}></img></Link>
+					<Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} alt={post.author.name} width={50} height={50}></img></Link>
 					<Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
 					<h2>{post.title}</h2>
 					<hr />

@@ -63,7 +63,7 @@ function ProfilePosts() {
          <h5>{post.body}</h5>
         </div>
 				<div className="postImg">
-					<img src={post.media} width="100%" height="200px"></img>
+					<img src={post.media} alt={post.title} width="100%" height="200px"></img>
 				</div>
 				</Card.Body>
 						<section>

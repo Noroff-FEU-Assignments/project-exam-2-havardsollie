@@ -11,7 +11,7 @@ function SingleProfile({ name, avatar }) {
        <Link to={`/profile/${name}`}>
        <div>
         {avatar ?
-        <img src={avatar} width={50} height={50}></img>
+        <img src={avatar} alt={name} width={50} height={50}></img>
         : <DefaultAvatar />
         }
       </div>
