@@ -72,6 +72,16 @@ h1 {
 }
 
 @media (max-width: 992px) {
+
+  .logo {
+    & img {
+      height: 50px;
+    }
+    & h1 {
+      font-size: smaller;
+    }
+  }
+
   .me-auto {
     display: block;
     padding: 5px;
