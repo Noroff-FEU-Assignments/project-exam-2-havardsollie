@@ -4,9 +4,9 @@ import { BASE_URL } from "../../api/Api";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Button } from "react-bootstrap";
+import RefreshAtSubmit from "../../common/Refresh";
 
 function UnfollowButton() {
-	const [unfollow, setUnfollow] = useState(false);
 	const [error, setError] = useState(null);
 
   let history = useNavigate();
@@ -20,11 +20,10 @@ function UnfollowButton() {
       try {
         const result = await http.put(url);
         console.log(result);
-        setUnfollow(true);
+        history(`/profile/${name}`)
+        // <RefreshAtSubmit />
       } catch (error) {
         setError(error);
-      } finally {
-        history(`/profile/${name}`);
       }
       }
 

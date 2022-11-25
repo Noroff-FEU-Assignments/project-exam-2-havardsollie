@@ -4,6 +4,7 @@ import { BASE_URL } from "../../api/Api";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Button } from "react-bootstrap";
+import RefreshAtSubmit from "../../common/Refresh";
 
 function FollowButton() {
 	const [follow, setFollow] = useState(false);
@@ -23,10 +24,9 @@ function FollowButton() {
         const result = await http.put(url);
         console.log(result);
         setFollow(true);
+        history(`/profile/${name}`)
       } catch (error) {
         setError(error);
-      } finally {
-        history(`/profile/${name}`);
       }
       }
 

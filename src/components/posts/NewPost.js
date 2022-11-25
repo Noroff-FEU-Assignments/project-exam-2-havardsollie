@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
@@ -9,6 +9,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
+import RefreshAtSubmit from "../../common/Refresh";
+import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title"),
@@ -18,6 +20,7 @@ const schema = yup.object().shape({
 });
 
 export default function NewPost() {
+  const [auth] = useContext(AuthContext);
 	const [submit, setSubmitting] = useState(false);
 	const [postError, setPostError] = useState(null);
   const [show, setShow] = useState(false);
@@ -53,13 +56,13 @@ export default function NewPost() {
       try {
           const response = await fetch(`${BASE_URL}/social/posts`, options)
           const data = await response.json();
-          console.log(data)
-
+          navigate("/");
+          // <RefreshAtSubmit />
         } catch (error) {
           console.log(error);
         } finally {
           setSubmitting(false);
-          navigate(`/`);
+          navigate(`/profile/${auth.name}`);
         }
       }
 

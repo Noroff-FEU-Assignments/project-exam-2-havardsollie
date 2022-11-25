@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Form from 'react-bootstrap/Form';
 import useAxios from "../../hooks/useAxios";
+import RefreshAtSubmit from "../../common/Refresh";
 
 const schema = yup.object().shape({
   symbol: yup.string().nullable().notRequired(),
@@ -29,10 +30,9 @@ export default function ReactToPost() {
     try {
       const response = await http.put(url);
       setEmoji(response);
+      <RefreshAtSubmit />
     } catch (error) {
       console.log(error)
-    } finally {
-      navigate(`/detail/${id}`)
     }
   }
 
