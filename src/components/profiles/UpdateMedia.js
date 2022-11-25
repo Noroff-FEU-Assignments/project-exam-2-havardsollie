@@ -50,7 +50,7 @@ export default function UpdateMedia() {
           console.log("Error:" + error);
         } finally {
           setSubmitting(false);
-          navigate(`/`);
+          window.location.reload();
         }
       }
 

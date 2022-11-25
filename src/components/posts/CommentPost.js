@@ -30,10 +30,11 @@ export default function CommentOnPost() {
   async function PostComment(data) {
     try {
       const response = await http.post(url, data);
-
     } catch (error) {
       console.log(error)
       setCommentError(error)
+    } finally {
+      window.location.reload();
     }
   }
 

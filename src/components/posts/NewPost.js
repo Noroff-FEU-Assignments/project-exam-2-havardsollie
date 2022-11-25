@@ -61,7 +61,6 @@ export default function NewPost() {
           console.log(error);
         } finally {
           setSubmitting(false);
-          // navigate(`/profile/${auth.name}`);
           window.location.reload();
         }
       }

@@ -25,9 +25,10 @@ function FollowButton() {
         const result = await http.put(url);
         console.log(result);
         setFollow(true);
-        history(`/profile/${auth.name}`)
       } catch (error) {
         setError(error);
+      } finally {
+        window.location.reload();
       }
       }
 

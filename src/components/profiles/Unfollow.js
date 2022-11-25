@@ -20,10 +20,10 @@ function UnfollowButton() {
     
       try {
         const result = await http.put(url);
-        console.log(result);
-        history(`/profile/${auth.name}`)
       } catch (error) {
         setError(error);
+      } finally {
+        window.location.reload();
       }
       }
 
