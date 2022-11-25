@@ -46,13 +46,11 @@ export default function UpdateMedia() {
       try {
           const response = await fetch(url, options)
           const data = await response.json();
-          console.log(data)
-
         } catch (error) {
           console.log("Error:" + error);
         } finally {
           setSubmitting(false);
-          navigate(`/profile/${auth.name}`);
+          navigate(`/`);
         }
       }
 

@@ -7,7 +7,6 @@ import Form from 'react-bootstrap/Form';
 import FormError from "../../common/FormError";
 import useAxios from "../../hooks/useAxios";
 import { Button } from "react-bootstrap";
-import RefreshAtSubmit from "../../common/Refresh";
 
 const schema = yup.object().shape({
   body: yup.string().required("Please enter your message"),
@@ -31,7 +30,7 @@ export default function CommentOnPost() {
   async function PostComment(data) {
     try {
       const response = await http.post(url, data);
-      <RefreshAtSubmit />
+
     } catch (error) {
       console.log(error)
       setCommentError(error)

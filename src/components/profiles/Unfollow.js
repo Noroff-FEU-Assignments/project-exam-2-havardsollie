@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../api/Api";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { Button } from "react-bootstrap";
-import RefreshAtSubmit from "../../common/Refresh";
+import AuthContext from "../../context/AuthContext";
 
 function UnfollowButton() {
+  const [auth] = useContext(AuthContext);
 	const [error, setError] = useState(null);
 
   let history = useNavigate();
@@ -20,8 +21,7 @@ function UnfollowButton() {
       try {
         const result = await http.put(url);
         console.log(result);
-        history(`/profile/${name}`)
-        // <RefreshAtSubmit />
+        history(`/profile/${auth.name}`)
       } catch (error) {
         setError(error);
       }

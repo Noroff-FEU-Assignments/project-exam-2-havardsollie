@@ -46,7 +46,7 @@ export default function EditPost({ title, body, tags, media }) {
     try {
       const response = await fetch(`${BASE_URL}/social/posts/${id}`, options);
       const data = await response.json();
-      console.log(data)
+      navigate(`/`);
     } catch (error) {
       setUpdateError(error.toString())
     } finally {

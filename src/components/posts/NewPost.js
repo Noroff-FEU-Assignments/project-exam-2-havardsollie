@@ -9,7 +9,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
-import RefreshAtSubmit from "../../common/Refresh";
 import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
@@ -57,7 +56,7 @@ export default function NewPost() {
           const response = await fetch(`${BASE_URL}/social/posts`, options)
           const data = await response.json();
           navigate("/");
-          // <RefreshAtSubmit />
+
         } catch (error) {
           console.log(error);
         } finally {
