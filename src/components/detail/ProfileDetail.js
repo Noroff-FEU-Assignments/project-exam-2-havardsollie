@@ -101,8 +101,8 @@ function ProfileDetails() {
     <Tab eventKey="posts" title="Posts" className="tabKey">
 		<Card className="profilePostSection">
 			{profile.name === auth.name ?
-			<><h4>My posts</h4><MyProfilePosts /></>
-			: <><h4>{profile.name}'s posts</h4><ProfilePosts /></>
+			<><MyProfilePosts /></>
+			: <><ProfilePosts /></>
 			}
 			</Card>
 			</Tab>
