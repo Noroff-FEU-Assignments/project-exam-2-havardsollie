@@ -40,7 +40,6 @@
 
 .reactions {
   display: flex;
-  width: 25%;
   justify-content: space-around;
 }
 
@@ -77,6 +76,7 @@
 
 .commentsInner {
   margin-left: 10px;
+  max-width: 60%;
 }
 
 .commentSection {
