@@ -32,7 +32,7 @@ function ProfileDetails() {
 		async function fetchData() {
       const options = {
         headers: {
-          Authorization: `Bearer ${auth.accessToken}`,
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
         },
       }
 
@@ -41,12 +41,14 @@ function ProfileDetails() {
 
 				if (response.ok) {
 					const json = await response.json();
-
-				console.log(json);
-				setProfile(json);
+					console.log(json);
+					setProfile(json);
 
 				} else {
 					setError("An error occurred");
+				}
+				if (!auth) {
+					(history("/login"));
 				}
 			} catch (error) {
 				setError(error.toString());

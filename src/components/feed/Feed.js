@@ -15,18 +15,17 @@ function ListOfPosts() {
 	const [error] = useState(null);
   const [auth] = useContext(AuthContext);
   const navigate = useNavigate();
-  const url = BASE_URL + `/social/posts/?_author=true&_comments=true&_reactions=true`;
 
 	useEffect(function () {
 		async function fetchData() {
       const options = {
         headers: {
-          Authorization: `Bearer ${auth.accessToken}`,
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
         },
       }
     
         try {
-            const response = await fetch(url, options)
+            const response = await fetch(`${BASE_URL}/social/posts/?_author=true&_comments=true&_reactions=true`, options)
             const data = await response.json();
             console.log("response", data);
             setPosts(data);
