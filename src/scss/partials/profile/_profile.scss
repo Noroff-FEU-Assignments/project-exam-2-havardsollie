@@ -68,6 +68,7 @@
 .followingList, .followersList {
   display: flex;
   margin: 0 auto;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
 }
@@ -109,8 +110,12 @@ h2 {
 
 @media (max-width: 770px) {
   
+  .followersList, .followingList {
+    justify-content: space-evenly;
+  }
 
   .follower {
+    width: 100px;
     & h5 {
       display: none;
     }
