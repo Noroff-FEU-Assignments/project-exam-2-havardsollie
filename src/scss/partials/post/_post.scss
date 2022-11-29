@@ -17,6 +17,9 @@
   display: flex;
   align-items: center;
   width: 100%;
+  & h2 {
+    padding-left: 2%;
+  }
 }
 
 .authorLinksPost img {
@@ -65,6 +68,7 @@
 
 .reactionsInner {
   padding: 10px;
+  font-size: 2rem;
 }
 
 .comments {
@@ -99,6 +103,10 @@
   .reactions {
     width: 100%;
     justify-content: left;
+  }
+
+  .reactionsInner {
+    font-size: 1rem;
   }
 
   .commentSection {

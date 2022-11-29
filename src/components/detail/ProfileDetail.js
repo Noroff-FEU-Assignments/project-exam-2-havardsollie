@@ -84,6 +84,7 @@ function ProfileDetails() {
 				}
 				</Card.Body>
 			</section>
+			{profile.banner ?
 			<section className="profileInfo">
 				<Card.Body className="middle">
 				<section className="profileBanner">
@@ -91,6 +92,7 @@ function ProfileDetails() {
 			</section>
 				</Card.Body>
 			</section>
+			: <></>}
 		</Card>
 		<Tabs
       defaultActiveKey="posts"
