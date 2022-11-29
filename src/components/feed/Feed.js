@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { BASE_URL } from "../../api/Api";
 import SinglePost from "../single/SinglePost";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import NewPost from "../posts/NewPost";
 import coffeeman from "../../assets/coffeeman.png";
+import useAxios from "../../hooks/useAxios";
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -15,20 +15,16 @@ function ListOfPosts() {
 	const [error] = useState(null);
   const [auth] = useContext(AuthContext);
   const navigate = useNavigate();
+  const http = useAxios();
+  const url = `/social/posts/?_author=true&_comments=true&_reactions=true`
 
 	useEffect(function () {
 		async function fetchData() {
-      const options = {
-        headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
-        },
-      }
-    
         try {
-            const response = await fetch(`${BASE_URL}/social/posts/?_author=true&_comments=true&_reactions=true`, options)
-            const data = await response.json();
-            console.log("response", data);
-            setPosts(data);
+            const response = await http.get(url)
+            
+            console.log(response);
+            setPosts(response.data);
     
             if (!auth) {
               navigate("/login"); 
@@ -41,7 +37,7 @@ function ListOfPosts() {
           }
         }
 		fetchData();
-	}, []);
+	}, [url]);
 
 	if (error) {
 		return <div>An error occured: {error}</div>;
@@ -67,7 +63,7 @@ function ListOfPosts() {
       className="tabWrap"
     >
     <Tab eventKey="all" title="All posts" className="tabKey">
-			{posts && posts.map((post) => {
+			{posts.map((post) => {
         const { id, title, body, media, _count, comments, reactions, author, tags } = post;
 				return <>
         <div className="feed-wrapper">

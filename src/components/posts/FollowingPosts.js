@@ -14,9 +14,7 @@ function FollowingFeed() {
 		async function fetchData() {
 			try {
 				const response = await http.get(url);
-        console.log(response.data);
 				setPosts(response.data);
-
 			} catch (error) {
 				setError(error.toString());
 			} finally {

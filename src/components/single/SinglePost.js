@@ -23,9 +23,14 @@ const [auth] = useContext(AuthContext);
         }
        <Card.Body>
        <section className="authorLinksPost">
-					<Link to={`/profile/${name}`}><img src={avatar} alt={name} width={50} height={50}></img></Link>
-					<Link to={`/profile/${name}`}><h3>{name}</h3></Link>
-            <h2 className="postTitle">{title}</h2>
+        {avatar ?
+         		<>
+              <Link to={`/profile/${name}`}><img src={avatar} alt={name} width={50} height={50}></img></Link>
+              <Link to={`/profile/${name}`}><h3>{name}</h3></Link>
+            </>
+        : <Link to={`/profile/${name}`}><h3>{name}</h3></Link> 
+        }
+          <h2 className="postTitle">{title}</h2>
 					<hr />
 				</section>
         <section className="postDetails">

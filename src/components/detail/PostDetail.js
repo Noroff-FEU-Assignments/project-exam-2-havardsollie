@@ -6,7 +6,6 @@ import ReactToPost from "../posts/ReactToPost";
 import CommentOnPost from "../posts/CommentPost";
 import AuthContext from "../../context/AuthContext";
 import EditPost from "../posts/EditPost";
-import CommentOnCom from "../posts/CommentCom";
 
 function PostDetails() {
 	const [post, setPost] = useState(null);
@@ -22,7 +21,7 @@ function PostDetails() {
 		async function fetchData() {
       const options = {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
+          Authorization: `Bearer ${auth.accessToken}`,
         },
       }
 
@@ -66,8 +65,13 @@ function PostDetails() {
 				: <></>
 				}
 				<section className="authorLinksPost">
-					<Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} alt={post.author.name} width={50} height={50}></img></Link>
-					<Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
+				{post.author.avatar ?
+         		<>
+              <Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} alt={post.author.name} width={50} height={50}></img></Link>
+              <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
+            </>
+        : <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link> 
+        }
 					<h2>{post.title}</h2>
 					<hr />
 				</section>
@@ -99,15 +103,11 @@ function PostDetails() {
 				<div className="comments">
 					<h6>Comments {post._count.comments}</h6>
 					{post.comments && post.comments.map((comment) => {
-						const { id, owner, body, replyToId } = comment;
+						const { owner, body } = comment;
 						return <>
 					<div className="commentsInner">
 						<Link to={`/profile/${owner}`}><p>{owner}:</p></Link>
 						<p>{body}</p>
-						<p>{id}</p>
-						{replyToId ? <p>Reply to {replyToId}</p> : <></> } 
-						<CommentOnCom key={id} />
-						{console.log(id)}
 					</div>
 					</>
 				})}

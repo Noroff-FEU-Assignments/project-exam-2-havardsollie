@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 import { BASE_URL } from "../../api/Api";
 import { Card } from "react-bootstrap";
 import { BsChat } from "react-icons/bs";
 
 function ProfilePosts() {
+	const [auth] = useContext(AuthContext);
 	const [profilePosts, setProfilePosts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -16,7 +18,7 @@ function ProfilePosts() {
 		async function fetchData() {
       const options = {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
+          Authorization: `Bearer ${auth.accessToken}`,
         },
       }
 
@@ -62,9 +64,12 @@ function ProfilePosts() {
 					 <h2>{post.title}</h2>
          <h5>{post.body}</h5>
         </div>
+				{post.media ?
 				<div className="postImg">
-					<img src={post.media} alt={post.title} width="100%" height="200px"></img>
+					<img src={post.media} alt={post.title} width="100%" height="auto"></img>
 				</div>
+		 		: <></>
+				}
 				</Card.Body>
 						<section>
         <div className="feedReactions">

@@ -12,8 +12,8 @@ import coffeeman from "../../assets/coffeeman.png"
 import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
-  title: yup.string().required("Please enter a title"),
-  body: yup.string().required("Please enter your message"),
+  title: yup.string().required("Please enter a title").min(1, "Required"),
+  body: yup.string().required("Please enter your message").min(1, "Required"),
   tags: yup.string(),
   media: yup.string().nullable().notRequired(),
 });
@@ -45,7 +45,7 @@ export default function NewPost() {
       body: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
+        Authorization: `Bearer ${auth.accessToken}`,
       },
     }
 
@@ -56,7 +56,6 @@ export default function NewPost() {
           const response = await fetch(`${BASE_URL}/social/posts`, options)
           const data = await response.json();
           navigate("/");
-
         } catch (error) {
           console.log(error);
         } finally {

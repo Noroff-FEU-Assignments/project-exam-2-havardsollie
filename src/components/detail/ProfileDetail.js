@@ -8,7 +8,6 @@ import UnfollowButton from "../profiles/Unfollow";
 import AuthContext from "../../context/AuthContext";
 import MyProfilePosts from "../profiles/MyProfilePosts";
 import UpdateMedia from "../profiles/UpdateMedia";
-import DefaultAvatar from "../../common/DefaultAvatar";
 import NewPost from "../posts/NewPost";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -33,7 +32,7 @@ function ProfileDetails() {
 		async function fetchData() {
       const options = {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTY3OSwibmFtZSI6ImhhdmFyZF9zb2xsaWUiLCJlbWFpbCI6IkhhYVNvbDg1MzQ2QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY2NjAwNTg3OH0.J00wSf1IXqUEyxB0MxXBmGgRU4niCs75PKxKXSzo2xs',
+          Authorization: `Bearer ${auth.accessToken}`,
         },
       }
 
@@ -85,16 +84,10 @@ function ProfileDetails() {
 			</section>
 			<section className="profileInfo">
 				<Card.Body className="middle">
-					{/* <div className="followContainer"> */}
-						{/* <h5>Followers: {profile._count.followers}</h5> */}
-					{/* <hr /> */}
-					{/* <h5>Following: {profile._count.following}</h5> */}
-				{/* </div> */}
 				<section className="profileBanner">
 				<img src={profile.banner} alt={profile.name} width="100%" height="auto"></img>
 			</section>
 				</Card.Body>
-				{/* <div class="vr" className="profileLines"/> */}
 			</section>
 		</Card>
 		<Tabs
@@ -138,7 +131,9 @@ function ProfileDetails() {
 							<img src={follower.avatar} alt={follower.name} width={100} height={100}></img>
 							<h5>{follower.name}</h5>
 							</Link>
-						: <DefaultAvatar />	
+						: <Link to={`/profile/${follower.name}`}>
+							<h5>{follower.name}</h5>
+						</Link>	
 						}
 						</div>
 					))}

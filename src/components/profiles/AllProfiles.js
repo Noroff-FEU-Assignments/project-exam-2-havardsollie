@@ -6,7 +6,7 @@ function ListOfProfiles() {
 	const [profiles, setProfiles] = useState([]);
 	const [error, setError] = useState(null);
   const http = useAxios();
-  const url = "/social/profiles?sortOrder=asc";
+  const url = "/social/profiles?sortOrder=asc&limit=50&offset=550";
 
 	useEffect(function () {
 		async function fetchProfiles() {
@@ -30,7 +30,7 @@ function ListOfProfiles() {
 		<>
     <div className="profiles-wrapper">
 			{profiles.map((profile) => {
-        const { name, email, banner, avatar, _count, posts, following, followers } = profile;
+        const { name, email, banner, avatar, _count } = profile;
 				return <>
         <div className="profileCard">
           <SingleProfile key={name} name={name} email={email} banner={banner} avatar={avatar} posts={_count.posts} following={_count.following} followers={_count.followers} />

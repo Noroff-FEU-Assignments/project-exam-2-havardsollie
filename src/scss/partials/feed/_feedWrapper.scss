@@ -29,9 +29,6 @@
   margin: 0 auto;
   background: rgb(255, 255, 255);
   border: 5px solid $green;
-  & img {
-
-  }
   & h2 {
     color: black;
 
@@ -98,6 +95,7 @@
   width: 50%;
   display: flex;
   flex-grow: 1;
+  font-size: 2rem;
   gap: 5px;
   justify-content: flex-start;
   margin-left: 15px;
@@ -135,6 +133,10 @@
     & h2 {
       text-align: center;
     }
+  }
+
+  .feedReactions {
+    font-size: 1rem;
   }
 
 }
