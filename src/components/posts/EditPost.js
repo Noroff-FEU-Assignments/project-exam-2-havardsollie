@@ -46,6 +46,7 @@ export default function EditPost({ title, body, tags, media }) {
     try {
       const response = await fetch(`${BASE_URL}/social/posts/${id}`, options);
       const data = await response.json();
+      setUpdateError(data.status)
       navigate(`/`);
     } catch (error) {
       setUpdateError(error.toString())
@@ -65,7 +66,7 @@ export default function EditPost({ title, body, tags, media }) {
           </Modal.Header>
           <Modal.Body>
           <Form className="createForm">
-              
+              {updateError && <FormError>{updateError}</FormError>}
                 <Form.Group className="mb-3" controlId="formGroupTitle">
                   <input
                     {...register("title")}
