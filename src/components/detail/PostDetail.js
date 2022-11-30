@@ -72,7 +72,7 @@ function PostDetails() {
             </>
         : <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link> 
         }
-					<h2>{post.title}</h2>
+					<h2 className="postTitle">{post.title}</h2>
 					<hr />
 				</section>
 				<section className="postDetails">
