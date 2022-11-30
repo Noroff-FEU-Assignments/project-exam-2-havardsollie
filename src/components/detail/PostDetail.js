@@ -79,14 +79,15 @@ function PostDetails() {
 					<div>
 						<h5>{post.body}</h5>
 					</div>
-					<div className="tags">
 				{post.tags ?
-					post.tags.map((tag) => (
+				<div className="tags">
+					{post.tags.map((tag) => (
 					<div>
 						<h6>#{tag}</h6>
 					</div>
-				)): <></>}
-				</div>
+					))}
+					</div>
+				: <></>}
 				</section>
 			</section>
 			<hr />
