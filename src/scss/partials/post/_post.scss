@@ -8,6 +8,11 @@
   }
 }
 
+.created {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .postTitle {
   font-size: 30px;
   padding-left: 10px;
@@ -17,6 +22,8 @@
   display: flex;
   align-items: center;
   width: 100%;
+  padding: 1%;
+  border-bottom: 1px solid $green;
   & h2 {
     padding-left: 2%;
   }
@@ -37,6 +44,7 @@
 
 .tags {
   display: flex;
+ justify-content: flex-end;
   gap: 10px;
 }
 
@@ -81,12 +89,17 @@
 }
 
 .comments {
-  padding: 1%;
-}
-
-.commentsInner {
+  padding-top: 1%;
   margin-left: 10px;
   max-width: 60%;
+}
+
+.commentsOwner {
+  font-size: 25px;
+}
+
+.commentBody {
+  font-size: 25px;
 }
 
 .commentSection {
@@ -133,8 +146,16 @@
     width: 100%;
   }
 
-  .commentsInner {
+  .comments {
     max-width: 90%;
+  }
+
+  .commentsOwner {
+    font-size: 20px;
+  }
+  
+  .commentBody {
+    font-size: 20px;
   }
 
   .authorLinksPost {

@@ -20,6 +20,12 @@ h3 {
   color: $blue;
 }
 
+h4 {
+  font-family: $font-main;
+  color: black;
+  padding-left: 1%;
+}
+
 h5 {
   font-family: $font-main;
   font-weight: lighter;
@@ -29,9 +35,8 @@ h5 {
 }
 
 h6 {
-  font-family: $font-main;
   color: black;
-  padding-left: 1%;
+  font-family: $font-main;
 }
 
 @media (max-width: 992px) {

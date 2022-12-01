@@ -76,7 +76,6 @@ function PostDetails() {
         : <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link> 
         }
 					<h2 className="postTitle">{post.title}</h2>
-					<hr />
 				</section>
 				<section className="postDetails">
 					<div>
@@ -93,8 +92,6 @@ function PostDetails() {
 					</div>
 				: <></>}
 			</section>
-			<hr />
-
 			<section className="interactions">
 				<div className="reactions">
 					{post.reactions && post.reactions.map((reaction) => (
@@ -106,13 +103,13 @@ function PostDetails() {
 				<ReactToPost />
 				<hr />
 				<div className="comments">
-					<h6>Comments {post._count.comments}</h6>
+					<h4>Comments {post._count.comments}</h4>
 					{post.comments && post.comments.map((comment) => {
 						const { owner, body } = comment;
 						return <>
 					<div className="commentsInner">
 						<Link to={`/profile/${owner}`}><p>{owner}:</p></Link>
-						<p>{body}</p>
+						<h6>{body}</h6>
 					</div>
 					</>
 				})}

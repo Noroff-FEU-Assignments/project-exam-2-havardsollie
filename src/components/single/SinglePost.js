@@ -14,7 +14,7 @@ const [auth] = useContext(AuthContext);
   <>
   <Card>
         <Link to={`detail/${id}`}>
-        <div>
+        <div className="created">
 					<h6>{created?.replace("2022-", "")}</h6>
 				</div>
         {media ?
@@ -37,41 +37,38 @@ const [auth] = useContext(AuthContext);
           <h2 className="postTitle">{title}</h2>
 					<hr />
 				</section>
+        {body ?
         <section className="postDetails">
 					<div>
 						<h5>{body}</h5>
 					</div>
 				</section>
+        :<></>}
        </Card.Body>
-       <section>
-        <div className="feedReactions">
-       {reactions ? reactions.map((emoji) => (
-          <p>{emoji.symbol}</p>
-      )):  <></>}
-      </div>
-      </section>
-       </Link>
-   </Card>
-   <Card> 
     <Card.Body className="interactionsFeed">
+    <section>
+       <div className="commentsHead">
+        <h4><AiOutlineLike /></h4>
+        <h4>{reactionsNumber}</h4>
+        </div>
+      </section>
+      <hr />
       <section>
         <div className="commentsHead">
-        <h6><BsChat /></h6>
-        <h6>{commentsNumber}</h6>
+        <h4><BsChat /></h4>
+        <h4>{commentsNumber}</h4>
         </div>
         {comments ? comments.map((com) => (
 
         <div className="comments">
-        
-					<div className="commentsInner">
-          <Link to={`/profile/${com.owner}`}><p>{com.owner}:</p></Link>
-          <p>{com.body}</p>
-        </div>
+          <Link to={`/profile/${com.owner}`}><p className="commentsOwner">{com.owner}:</p></Link>
+          <h6 className="commentBody">{com.body}</h6>
         </div>
       )):  <></>}
       
       </section>
        </Card.Body>
+       </Link> 
     </Card>
      </>
  );
