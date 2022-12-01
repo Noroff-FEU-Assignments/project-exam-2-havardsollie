@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsChat } from "react-icons/bs";
+import { AiOutlineLike } from "react-icons/ai";
 import AuthContext from "../../context/AuthContext";
 
-function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, tags, name, avatar }) {
+function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, created, name, avatar }) {
 
 const [auth] = useContext(AuthContext);
 
@@ -13,6 +14,9 @@ const [auth] = useContext(AuthContext);
   <>
   <Card>
         <Link to={`detail/${id}`}>
+        <div>
+					<h6>{created?.replace("2022-", "")}</h6>
+				</div>
         {media ?
         <Card.Body className="post-container">
          <div className="postImg">
@@ -43,7 +47,7 @@ const [auth] = useContext(AuthContext);
         <div className="feedReactions">
        {reactions ? reactions.map((emoji) => (
           <p>{emoji.symbol}</p>
-      )):  <p>0</p>}
+      )):  <></>}
       </div>
       </section>
        </Link>

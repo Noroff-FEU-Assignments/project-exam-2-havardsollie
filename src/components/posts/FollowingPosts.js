@@ -35,10 +35,10 @@ function FollowingFeed() {
   return (
     <>
 		{posts.map((post) => {
-      const { id, title, body, media, _count, comments, reactions, author, tags } = post;
+      const { id, title, body, media, created, _count, comments, reactions, author, tags } = post;
       return <>
       <div className="feed-wrapper">
-        <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} avatar={author.avatar} tags={tags} comments={comments} commentsNumber={_count.comments} reactions={reactions} reactionsNumber={_count.reactions} />
+        <SinglePost key={id} id={id} title={title} body={body} media={media} name={author.name} created={created} avatar={author.avatar} tags={tags} comments={comments} commentsNumber={_count.comments} reactions={reactions} reactionsNumber={_count.reactions} />
       </div>
       </>
     })}

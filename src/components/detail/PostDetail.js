@@ -56,6 +56,9 @@ function PostDetails() {
 
   return (
 		<Card className="postWrapper">
+			<div>
+				<h6>{post.created?.replace("2022-", "")}</h6>
+			</div>
 			<section className="postBody">
 				{post.media ? 
 				<>
@@ -79,16 +82,16 @@ function PostDetails() {
 					<div>
 						<h5>{post.body}</h5>
 					</div>
+				</section>
 				{post.tags ?
 				<div className="tags">
 					{post.tags.map((tag) => (
-					<div>
-						<h6>#{tag}</h6>
+					<div className="singleTag">
+						<h6>#{tag.trim()}</h6>
 					</div>
 					))}
 					</div>
 				: <></>}
-				</section>
 			</section>
 			<hr />
 

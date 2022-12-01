@@ -21,11 +21,23 @@ h3 {
 }
 
 h5 {
+  font-family: $font-main;
   font-weight: lighter;
-  color: black;
+  color: rgb(93, 93, 93);
   padding: 5px;
+  font-size: 30px;
 }
 
 h6 {
   font-family: $font-main;
+  color: black;
+  padding-left: 1%;
+}
+
+@media (max-width: 992px) {
+
+  h5 {
+    font-size: 20px;
+  }
+
 }

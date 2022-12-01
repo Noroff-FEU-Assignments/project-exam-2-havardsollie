@@ -9,7 +9,7 @@
 }
 
 .postTitle {
-  font-size: 25px;
+  font-size: 30px;
   padding-left: 10px;
 }
 
@@ -33,6 +33,15 @@
   justify-content: space-between;
   align-items:baseline;
   margin-top: 2%;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+}
+
+.singleTag {
+  width: 100px;
 }
 
 .interactions {
@@ -100,6 +109,11 @@
   .postTitle {
     font-size: 20px;
     padding-left: 5px;
+  }
+
+  .tags {
+    display: block;
+    gap: 10px;
   }
 
   .reactForm {
