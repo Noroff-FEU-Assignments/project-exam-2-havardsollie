@@ -47,8 +47,8 @@ export default function ReactToPost() {
                   >
                     <option value="">Emoji</option>
                     <option>😃</option>
-                    <option>🥳</option>
-                    <option>🌧</option>
+                    <option>❤️</option>
+                    <option>👍</option>
                   </select>
                 <button>React</button>
             </Form>

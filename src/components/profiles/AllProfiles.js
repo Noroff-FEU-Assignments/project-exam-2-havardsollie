@@ -10,7 +10,7 @@ function ListOfProfiles() {
   const [auth] = useContext(AuthContext);
 	const [error, setError] = useState(null);
   const http = useAxios();
-  const url = BASE_URL + "/social/profiles?sortOrder=asc&limit=50&offset=550";
+  const url = BASE_URL + "/social/profiles?sortOrder=asc";
   const navigate = useNavigate();
 
 	useEffect(function () {
