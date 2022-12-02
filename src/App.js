@@ -11,6 +11,7 @@ import ProfileDetails from "./components/detail/ProfileDetail";
 import EditPost from "./components/posts/EditPost";
 import ListOfProfiles from "./components/profiles/AllProfiles";
 import Footer from "./layout/Footer";
+import HomePage from "./components/home/Home";
 
 function App() {
 	return (
@@ -20,7 +21,8 @@ function App() {
 			<div className="container">
 				<Routes>
           
-            <Route path="/" element={<Feed />} />
+            <Route path="/" element={<HomePage />} />
+						<Route path="/feed" element={<Feed />} />
 						<Route path="/allprofiles" element={<ListOfProfiles />} />
             <Route path="/detail/:id" element={<PostDetails />} />
 						<Route path="/detail/edit/:id" element={<EditPost />} />

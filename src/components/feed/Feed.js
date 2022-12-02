@@ -31,10 +31,6 @@ function ListOfPosts() {
             const data = await response.json();
             console.log("response", data);
             setPosts(data);
-    
-            if (!auth) {
-              navigate("/login"); 
-            }
           } catch (error) {
             console.log("error", error);
 
