@@ -24,11 +24,9 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  background: rgb(255, 255, 255);
-  border: 5px solid $green;
   & h2 {
-    color: black;
-
+    color: white;
+    text-decoration: underline 2px $green;
     font-size: 25px;
   }
 }
@@ -64,6 +62,11 @@
 
 .postImg {
   width: 100%;
+  object-fit: cover;
+  & img {
+    height: 15rem;
+    object-fit: cover;
+  }
 }
 
 .cart-title h5 {
@@ -124,11 +127,9 @@
     width: 80%;
     background: rgb(255, 255, 255);
     border: 3px solid $green;
-    & img {
-  
-    }
     & h2 {
       text-align: center;
+      color: black;
     }
   }
 

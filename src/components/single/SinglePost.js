@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsChat } from "react-icons/bs";
-import { AiOutlineLike } from "react-icons/ai";
+import { BsEmojiHeartEyes } from "react-icons/bs";
 import AuthContext from "../../context/AuthContext";
 
 function SinglePost({ id, title, body, media, _count, comments, commentsNumber, reactions, reactionsNumber, created, name, avatar }) {
@@ -20,7 +20,7 @@ const [auth] = useContext(AuthContext);
         {media ?
         <Card.Body className="post-container">
          <div className="postImg">
-          <img src={media} alt={title} width="100%" height="auto"></img>
+          <img src={media} alt={title} width="100%"></img>
           </div>
           </Card.Body>
           : <></>
@@ -48,7 +48,7 @@ const [auth] = useContext(AuthContext);
     <Card.Body className="interactionsFeed">
     <section>
        <div className="commentsHead">
-        <h4><AiOutlineLike /></h4>
+        <h4><BsEmojiHeartEyes /></h4>
         <h4>{reactionsNumber}</h4>
         </div>
       </section>

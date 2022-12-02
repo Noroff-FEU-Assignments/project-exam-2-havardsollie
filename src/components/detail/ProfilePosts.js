@@ -66,7 +66,7 @@ function ProfilePosts() {
         </div>
 				{post.media ?
 				<div className="postImg">
-					<img src={post.media} alt={post.title} width="100%" height="auto"></img>
+					<img src={post.media} alt={post.title} width="100%"></img>
 				</div>
 		 		: <></>
 				}

@@ -51,14 +51,14 @@ function ListOfPosts() {
       <NewPost />
       <hr />
       <section className="feedHeading">
-      <h2>Latest thoughts in the</h2>
+      <h2>Caffeine</h2>
       <img
             src={coffeeman}
             width="auto"
-            height="77px"
+            height="100px"
             alt="Coffee drinking man"
           />
-           <h2>community</h2>
+           <h2>Community</h2>
           </section>
     <Tabs
       defaultActiveKey="all"
