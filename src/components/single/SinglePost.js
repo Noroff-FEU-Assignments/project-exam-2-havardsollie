@@ -29,7 +29,7 @@ const [auth] = useContext(AuthContext);
        <section className="authorLinksPost">
         {avatar ?
          		<>
-              <Link to={`/profile/${name}`}><img src={avatar} alt={name} width={50} height={50}></img></Link>
+              <Link to={`/profile/${name}`}><img src={avatar} alt={name} width={100} height={100}></img></Link>
               <Link to={`/profile/${name}`}><h3>{name}</h3></Link>
             </>
         : <Link to={`/profile/${name}`}><h3>{name}</h3></Link> 
@@ -61,7 +61,7 @@ const [auth] = useContext(AuthContext);
         {comments ? comments.map((com) => (
 
         <div className="comments">
-          <Link to={`/profile/${com.owner}`}><p className="commentsOwner">{com.owner}:</p></Link>
+          <Link to={`/profile/${com.owner}`}><h3 className="commentsOwner">{com.owner}:</h3></Link>
           <h6 className="commentBody">{com.body}</h6>
         </div>
       )):  <></>}

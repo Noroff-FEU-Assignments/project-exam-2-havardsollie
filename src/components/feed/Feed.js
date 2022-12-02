@@ -60,7 +60,7 @@ function ListOfPosts() {
           />
            <h2>community</h2>
           </section>
-          <Tabs
+    <Tabs
       defaultActiveKey="all"
       className="tabWrap"
     >

@@ -82,8 +82,8 @@ function MyProfilePosts() {
 			 <Card.Body className="interactionsFeed">
 			 <section>
         <div className="commentsHead">
-        <h6><BsChat /></h6>
-        <h6>{post._count.comments}</h6>
+        <h4><BsChat /></h4>
+        <h4>{post._count.comments}</h4>
         </div>
         {post.comments ? post.comments.map((com) => (
 					<div className="comments">

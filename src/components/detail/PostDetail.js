@@ -6,6 +6,7 @@ import ReactToPost from "../posts/ReactToPost";
 import CommentOnPost from "../posts/CommentPost";
 import AuthContext from "../../context/AuthContext";
 import EditPost from "../posts/EditPost";
+import { BsChat } from "react-icons/bs";
 
 function PostDetails() {
 	const [post, setPost] = useState(null);
@@ -56,7 +57,7 @@ function PostDetails() {
 
   return (
 		<Card className="postWrapper">
-			<div>
+			<div className="created">
 				<h6>{post.created?.replace("2022-", "")}</h6>
 			</div>
 			<section className="postBody">
@@ -70,7 +71,7 @@ function PostDetails() {
 				<section className="authorLinksPost">
 				{post.author.avatar ?
          		<>
-              <Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} alt={post.author.name} width={50} height={50}></img></Link>
+              <Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} alt={post.author.name} width={100} height={100}></img></Link>
               <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
             </>
         : <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link> 
@@ -103,13 +104,17 @@ function PostDetails() {
 				<ReactToPost />
 				<hr />
 				<div className="comments">
-					<h4>Comments {post._count.comments}</h4>
+					<div className="commentHead">
+					<h4><BsChat /></h4>
+					<h4>{post._count.comments}</h4>
+				</div>
+					
 					{post.comments && post.comments.map((comment) => {
 						const { owner, body } = comment;
 						return <>
 					<div className="commentsInner">
-						<Link to={`/profile/${owner}`}><p>{owner}:</p></Link>
-						<h6>{body}</h6>
+						<Link to={`/profile/${owner}`}><h3>{owner}:</h3></Link>
+						<h6 className="commentBody">{body}</h6>
 					</div>
 					</>
 				})}

@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Caffeine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my submission for Project Exam 2 in the Noroff Frontend-development program. This project is a social media platform built with the [Noroff API](https://noroff-api-docs.netlify.app/).
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Caffeine is a real life social media platform, but in this project the frontend is completely new. A new user may register a profile, log in and read the feed of posts, posted by fellow users. The users are students and teachers at Noroff. A user is able to create, edit and delete a post. Personalize their profile page and visit other users profile page. The users may interact with each other in form of following each other and react and comment to each others posts.
 
-### `npm start`
+## Resources
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React (18.2.0)
+- React-Icons (4.6.0)
+- React-Router-Dom (6.4.2)
+- Bootstrap (5.1.3)
+- Axios (1.1.3)
+- Yup (0.32.11)
+- Google Fonts
 
-### `npm test`
+### Design
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Adobe XD
 
-### `npm run build`
+### Planning and hosting
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Trello (planning)
+- Netlify (hosting)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation and setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone or download this repository. Node and npm is essential to run the installation.
+Use `npm install` to install.
+Use `npm start` to run the project locally.
 
-### `npm run eject`
+## Register user
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Register a new account:
+Username: must not use any punctuation marks except underscore.
+Email: must be a @stud.noroff.no / @noroff.no address.
+Password: must be at least 8 characters.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Planning
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To ensure workflow over the past seven weeks I have used a kanban board to identify tasks and order them in terms of development. A task moves from different slots depending on the status of the task. It starts in the "Open" slot, then moves to "In progress", and finally "Finished". It it very similar to Issues and Boards in GitLab.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+A Gantt chart has been used for the overall time plan of the project. Week 1 for researching and inspiration, week 2,3 for design developemt, week 4,5,6 for coding and week 7 for testing and wrapping.
 
-## Learn More
+### Design
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The requirements for this project is recognisable across the major real life social media platforms out there. Design inspiration had to be taken from Facebook, Reddit and Twitter. Especially the latter in terms of post design and linking profiles. Color choices is something entirely new to stick out from the other competitors. The real Caffeine is also something completely else, therefore I have not taken much inspiration there.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Code
 
-### Code Splitting
+Connecting to an API for the first time is always an exciting process. Will it work? Of course it will. Once I got a positive response I started to plot the pages together according to the user stories and technical requirements, trying to seperate it as much as possible. I do not want too much code in a single component.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The styling followed with a lot of adjustments to make it look OK across various screen sizes and ensure universal design.

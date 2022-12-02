@@ -92,10 +92,14 @@
 }
 
 .comments {
-
   padding-top: 1%;
   margin-left: 10px;
   max-width: 60%;
+}
+
+.commentHead {
+  display: flex;
+  gap: 5px;
 }
 
 .commentsOwner {
@@ -121,6 +125,11 @@
 
   .postWrapper {
     width: 100%;
+  }
+
+  .postAvatar {
+    height: 50px;
+    width: 50px;
   }
 
   .postTitle {
