@@ -72,7 +72,6 @@
 }
 
 .interactionsFeed {
-  border-bottom: 1px solid $green;
   & h6 {
     text-align: left;
   }
@@ -107,7 +106,6 @@
 .interactions {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid $green;
 }
 
 @media (max-width: 992px) {

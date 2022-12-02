@@ -50,7 +50,7 @@ export default function ReactToPost() {
                     <option>❤️</option>
                     <option>👍</option>
                   </select>
-                <button>React</button>
+                <button>Send</button>
             </Form>
             </>
         );

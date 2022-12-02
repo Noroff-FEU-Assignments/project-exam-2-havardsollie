@@ -10,7 +10,7 @@ a {
 }
 
 h2 {
-  font-family: $font-logo;
+  font-family: $font-main;
 }
 
 h3 {
@@ -23,11 +23,11 @@ h3 {
 h4 {
   font-family: $font-main;
   color: black;
-  padding-left: 1%;
+
 }
 
 h5 {
-  font-family: $font-main;
+  font-family: $font-nav;
   font-weight: lighter;
   color: rgb(93, 93, 93);
   padding: 5px;
@@ -36,7 +36,7 @@ h5 {
 
 h6 {
   color: black;
-  font-family: $font-main;
+  font-family: $font-nav;
 }
 
 @media (max-width: 992px) {

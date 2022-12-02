@@ -15,7 +15,7 @@ const [auth] = useContext(AuthContext);
   <Card>
         <Link to={`detail/${id}`}>
         <div className="created">
-					<h6>{created?.replace("2022-", "")}</h6>
+					<h4>{created?.replace("2022-", "")}</h4>
 				</div>
         {media ?
         <Card.Body className="post-container">
