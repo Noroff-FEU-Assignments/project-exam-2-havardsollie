@@ -7,7 +7,7 @@ import { BASE_URL } from "../../api/Api";
 import { Button } from "react-bootstrap";
 
 const nameRegex = /^[a-zA-Z0-9]+?/;
-const emailRegex = /^\w+([-+.']\w+)*@?(stud.noroff.no)$/;
+const emailRegex = /^\w+([-+.']\w+)*@?(stud.noroff.no|noroff.no)$/;
 
 const schema = yup.object().shape({
 	name: yup.string().required("Please enter your username").matches(nameRegex, "Only letters and underscore"),
