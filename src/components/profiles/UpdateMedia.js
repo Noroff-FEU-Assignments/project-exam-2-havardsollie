@@ -61,7 +61,7 @@ export default function UpdateMedia() {
     </Button>
     <Modal show={show} onHide={handleClose}>
     <Modal.Header closeButton>
-      <Modal.Title>Update banner and avatar</Modal.Title>
+      <Modal.Title>Update avatar and banner</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <Form className="createForm">
