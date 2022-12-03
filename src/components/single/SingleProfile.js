@@ -6,21 +6,21 @@ function SingleProfile({ name, avatar }) {
 
  return (
   <>
-  <Card>
-       <Card.Header className="profileLinks">
-       <Link to={`/profile/${name}`}>
-       <div>
-        {avatar ?
-        <img src={avatar} alt={name} width={50} height={50}></img>
-        : <DefaultAvatar />
-        }
-      </div>
-      <hr />
+    <Card>
+      <Card.Header className="profileLinks">
+        <Link to={`/profile/${name}`}>
+        <div>
+          {avatar ?
+          <img src={avatar} alt={name} width={50} height={50}></img>
+          : <DefaultAvatar />
+          }
+        </div>
+        <hr />
         <div><h3>{name}</h3></div>
         </Link>
-        </Card.Header>
-   </Card>
-     </>
+      </Card.Header>
+    </Card>
+  </>
  );
 }
 

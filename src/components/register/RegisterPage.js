@@ -8,7 +8,7 @@ export default function RegisterPage() {
 				<Card.Img src={logo} alt="Coffeine logo" />
 				<hr />
 				<div className="welcomeText">
-				<h2>Join the</h2><h1>Community</h1>
+					<h2>Join the</h2><h1>Community</h1>
 				</div>
       	<hr />
 				<RegisterForm />

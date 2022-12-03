@@ -13,7 +13,6 @@ const schema = yup.object().shape({
 });
 
 export default function CommentOnPost() {
-  const [comment, setComment] = useState();
   const [commentError, setCommentError] = useState(null);
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
@@ -25,8 +24,6 @@ export default function CommentOnPost() {
   const http = useAxios();
   const url = `/social/posts/${id}/comment`
   
-
-
   async function PostComment(data) {
     try {
       const response = await http.post(url, data);
@@ -37,7 +34,6 @@ export default function CommentOnPost() {
       window.location.reload();
     }
   }
-
         return (
           <>
             <Form className="commentForm">

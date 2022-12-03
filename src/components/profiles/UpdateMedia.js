@@ -27,7 +27,7 @@ export default function UpdateMedia() {
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema),
 	});
-  const navigate = useNavigate();
+  
   const url = BASE_URL + "/social/profiles/" + auth.name + "/media";
 
   async function updateMedia(schema) {
@@ -38,66 +38,65 @@ export default function UpdateMedia() {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${auth.accessToken}`,
       },
+  }
+
+  setSubmitting(true);
+  setUpdateError(null);
+
+  try {
+      const response = await fetch(url, options)
+      const data = await response.json();
+    } catch (error) {
+      console.log("Error:" + error);
+    } finally {
+      setSubmitting(false);
+      window.location.reload();
     }
+  }
 
-      setSubmitting(true);
-      setUpdateError(null);
+  return (
+    <>
+    <Button variant="outline-secondary" className="newPost" onClick={handleShow}>
+      Update images
+    </Button>
+    <Modal show={show} onHide={handleClose}>
+    <Modal.Header closeButton>
+      <Modal.Title>Update banner and avatar</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <Form className="createForm">
+          <fieldset disabled={submit}>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <input
+                {...register("avatar")}
+                defaultValue={auth.avatar}
+                placeholder="Avatar"
+                />
+              {errors.banner && <FormError>{errors.banner.message}</FormError>}
+            </Form.Group>
 
-      try {
-          const response = await fetch(url, options)
-          const data = await response.json();
-        } catch (error) {
-          console.log("Error:" + error);
-        } finally {
-          setSubmitting(false);
-          window.location.reload();
-        }
-      }
-
-        return (
-          <>
-          <Button variant="outline-secondary" className="newPost" onClick={handleShow}>
-            Update images
-          </Button>
-          <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Update banner and avatar</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-          <Form className="createForm">
-              <fieldset disabled={submit}>
-                <Form.Group className="mb-3" controlId="formGroupEmail">
-                  <input
-                    {...register("avatar")}
-                    defaultValue={auth.avatar}
-                    placeholder="Avatar"
-                    />
-                  {errors.banner && <FormError>{errors.banner.message}</FormError>}
-                </Form.Group>
-
-                <hr />
-                <Form.Group className="mb-3" controlId="formGroupPassword">
-                  <input
-                    {...register("banner")}
-                    defaultValue={auth.banner}  
-                    placeholder="Banner"                
-                    />
-                  {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
-                </Form.Group>
-                <hr />
-                {updateError && <FormError>{updateError}</FormError>}
-                <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(updateMedia)}>{submit ? "Updating..." : "Update"}</Button>
-              </fieldset>
-            </Form>
-            </Modal.Body>
-            <Modal.Footer>
-            <img src={coffeeman} alt="Man drinking coffee" width="auto" height={100}></img>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            </Modal.Footer>
-            </Modal>
-            </>
-        );
-
+            <hr />
+            <Form.Group className="mb-3" controlId="formGroupPassword">
+              <input
+                {...register("banner")}
+                defaultValue={auth.banner}  
+                placeholder="Banner"                
+                />
+              {errors.avatar && <FormError>{errors.avatar.message}</FormError>}
+            </Form.Group>
+            <hr />
+            {updateError && <FormError>{updateError}</FormError>}
+            <Button variant="outline-secondary" className="newPost" onClick={handleSubmit(updateMedia)}>{submit ? "Updating..." : "Update"}</Button>
+          </fieldset>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <img src={coffeeman} alt="Man drinking coffee" width="auto" height={100}></img>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  </>
+);
 }

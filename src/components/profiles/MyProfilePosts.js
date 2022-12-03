@@ -25,10 +25,8 @@ function MyProfilePosts() {
 
 				if (response.ok) {
 					const json = await response.json();
-
-				console.log(json);
-				setProfilePosts(json);
-
+					console.log(json);
+					setProfilePosts(json);
 				} else {
 					setError("An error occurred");
 				}
@@ -55,53 +53,53 @@ function MyProfilePosts() {
 		 return (
 		 <>
 		 <Card className="feed-wrapper">
-		 <Card.Body>
-				 <Link to={`/detail/${post.id}`}>
-					 <Card.Body className="post-container">
+		 	<Card.Body>
+				<Link to={`/detail/${post.id}`}>
+					<Card.Body className="post-container">
 					 <div className="postText">
-					 <h2>{post.title}</h2>
-         <h5>{post.body}</h5>
-        </div>
-				{post.media ?
-				<div className="postImg">
-					<img src={post.media} alt={post.title} width="100%" height="auto"></img>
-				</div>
-				: <></>
-				}
-				</Card.Body>
-					 <section>
-        <div className="feedReactions">
-       {post.reactions ? post.reactions.map((emoji) => (
-          <p>{emoji.symbol}</p>
-      )):  <p>0</p>}
-      </div>
-      </section>
-				 </Link>
-			 </Card.Body>
-			 <Card>
+					 	<h2>{post.title}</h2>
+         		<h5>{post.body}</h5>
+        	</div>
+					{post.media ?
+						<div className="postImg">
+							<img src={post.media} alt={post.title} width="100%" height="auto"></img>
+						</div>
+						: <></>
+					}
+					</Card.Body>
+					<section>
+      			<div className="feedReactions">
+       				{post.reactions ? post.reactions.map((emoji) => (
+          			<p>{emoji.symbol}</p>
+      				)):  <p>0</p>}
+      			</div>
+      		</section>
+				</Link>
+			</Card.Body>
+			<Card>
 			 <Card.Body className="interactionsFeed">
-			 <section>
-        <div className="commentsHead">
-        <h4><BsChat /></h4>
-        <h4>{post._count.comments}</h4>
-        </div>
-        {post.comments ? post.comments.map((com) => (
-					<div className="comments">
-					<div className="commentsInner">
-          <Link to={`/profile/${com.owner}`}><p>{com.owner}:</p></Link>
-          <p>{com.body}</p>
-        </div>
-				</div>
-      )):  <></>}
-      </section>
-       </Card.Body>
-				 </Card>
-				 </Card>
-				 </>
-		 )
-		})}
-	 </>
-   );
-  }
+			 	<section>
+        	<div className="commentsHead">
+        		<h4><BsChat /></h4>
+        		<h4>{post._count.comments}</h4>
+        	</div>
+        	{post.comments ? post.comments.map((com) => (
+						<div className="comments">
+							<div className="commentsInner">
+          			<Link to={`/profile/${com.owner}`}><p>{com.owner}:</p></Link>
+          				<p>{com.body}</p>
+        			</div>
+						</div>
+      		)):  <></>}
+      	</section>
+      	</Card.Body>
+			</Card>
+		</Card>
+	</>
+)
+})}
+</>
+);
+}
   
   export default MyProfilePosts;

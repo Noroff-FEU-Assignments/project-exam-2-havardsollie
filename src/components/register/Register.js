@@ -24,61 +24,59 @@ export default function RegisterForm() {
 		resolver: yupResolver(schema),
 	});
 
-async function registerUser(schema) {
-  const options = {
-    method: "POST",
-    body: JSON.stringify(schema),
-    headers: {
-      'Content-Type': 'application/json'
-    },
+  async function registerUser(schema) {
+    const options = {
+      method: "POST",
+      body: JSON.stringify(schema),
+      headers: {
+        'Content-Type': 'application/json'
+      },
   }
 
-    setSubmitting(true);
+  setSubmitting(true);
 
-    try {
-        const response = await fetch(`${BASE_URL}/social/auth/register`, options)
-        const data = await response.json();
-        console.log("response", data);
-        if (response.ok) {
-          setSuccess(data.id)
-        }
-        else {
-          setSubmitError(data.status)
-        }
-      } catch (error) {
-        setSubmitError(error.toString());
-      } finally {
-        setSubmitting(false);
+  try {
+      const response = await fetch(`${BASE_URL}/social/auth/register`, options)
+      const data = await response.json();
+      console.log("response", data);
+      if (response.ok) {
+        setSuccess(data.id)
       }
+      else {
+        setSubmitError(data.status)
+      }
+    } catch (error) {
+      setSubmitError(error.toString());
+    } finally {
+      setSubmitting(false);
     }
+  }
 
-        return (
-          <form className="enterForm">
-            {submitError && <FormError>{submitError}</FormError>}
-            <input {...register("name")} placeholder="Username" required />
-            {errors.name && <FormError>{errors.name.message}</FormError>}
-            <hr />
-
-            <input
-              {...register("email")}
-              placeholder="Email"
-              type="email"
-              required
-            />
-            {errors.email && <FormError>{errors.email.message}</FormError>}
-            <hr />
-      
-            <input
-              {...register("password")}
-              placeholder="Password"
-              type="password"
-              required
-            />
-            {errors.password && <FormError>{errors.password.message}</FormError>}
-            <hr />
-            {successMessage && <p className="success">User created!</p>}
-            <Button onClick={handleSubmit(registerUser)} variant="outline-secondary" className="newPost">{submit ? "Registering user" : "Register"}</Button>
-          </form>
-        );
+  return (
+    <form className="enterForm">
+      {submitError && <FormError>{submitError}</FormError>}
+      <input {...register("name")} placeholder="Username" required />
+      {errors.name && <FormError>{errors.name.message}</FormError>}
+      <hr />
+      <input
+        {...register("email")}
+        placeholder="Email"
+        type="email"
+        required
+      />
+      {errors.email && <FormError>{errors.email.message}</FormError>}
+      <hr />
+      <input
+        {...register("password")}
+        placeholder="Password"
+        type="password"
+        required
+      />
+      {errors.password && <FormError>{errors.password.message}</FormError>}
+      <hr />
+      {successMessage && <p className="success">User created!</p>}
+      <Button onClick={handleSubmit(registerUser)} variant="outline-secondary" className="newPost">{submit ? "Registering user" : "Register"}</Button>
+    </form>
+  );
 
 }

@@ -9,9 +9,6 @@ import AuthContext from "../../context/AuthContext";
 import Form from 'react-bootstrap/Form';
 import { Button } from "react-bootstrap";
 
-
-// const url = BASE_URL + TOKEN_PATH;
-
 const schema = yup.object().shape({
 	email: yup.string().required("Please enter your stud.noroff.no address").email("Please enter valid email address"),
 	password: yup.string().required("Please enter your password").min(8, "Must be at least 8 characters"),
@@ -36,7 +33,6 @@ export default function LoginForm() {
         'Content-Type': 'application/json',
       },
     }
-
       setSubmitting(true);
       setLoginError(null);
 
@@ -88,5 +84,4 @@ export default function LoginForm() {
             </Form>
             </>
         );
-
 }

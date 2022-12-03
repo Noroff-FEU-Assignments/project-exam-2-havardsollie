@@ -32,35 +32,35 @@ function Navigate() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-			{auth ? (
-				<>
-        <div className="nav-middle">
-          <div className="navLink">
-          <Nav.Link>
-            <Link to="/allprofiles"><BsPeople />
-            <h5>All profiles</h5>
-            </Link>
-            </Nav.Link>
+        {auth ? (
+          <>
+          <div className="nav-middle">
+            <div className="navLink">
+            <Nav.Link>
+              <Link to="/allprofiles"><BsPeople />
+              <h5>All profiles</h5>
+              </Link>
+              </Nav.Link>
+            </div>
+            <div className="navLink">
+            <Nav.Link>
+              <Link to={`/profile/${auth.name}`}><BsPersonCircle />
+              <h5>My profile</h5>
+              </Link>
+              </Nav.Link>
+            </div>
           </div>
-          <div className="navLink">
-					<Nav.Link>
-            <Link to={`/profile/${auth.name}`}><BsPersonCircle />
-            <h5>My profile</h5>
-            </Link>
-            </Nav.Link>
+          <div className="nav-right">
+            <Nav.Link><BsDoorOpen className="logOut" onClick={logout} /></Nav.Link>
           </div>
-        </div>
-        <div className="nav-right">
-          <Nav.Link><BsDoorOpen className="logOut" onClick={logout} /></Nav.Link>
-        </div>
-				</>
-			) : (
-				<>
-          <Nav.Link><Link to="/login">Login</Link></Nav.Link><Nav.Link><Link to="/register">Register</Link></Nav.Link>
-        </>
-			)}
-		          </Nav>
-        </Navbar.Collapse>
+          </>
+          ) : (
+          <>
+            <Nav.Link><Link to="/login">Login</Link></Nav.Link><Nav.Link><Link to="/register">Register</Link></Nav.Link>
+          </>
+        )}
+		  </Nav>
+      </Navbar.Collapse>
       </Container>
     </Navbar>
 	);

@@ -10,6 +10,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import coffeeman from "../../assets/coffeeman.png"
 import AuthContext from "../../context/AuthContext";
+import {BsPlusCircle} from "react-icons/bs";
 
 const schema = yup.object().shape({
   title: yup.string().required("Please enter a title").min(1, "Required"),
@@ -66,9 +67,7 @@ export default function NewPost() {
 
         return (
           <>
-          <Button variant="outline-secondary" className="newPost" onClick={handleShow}>
-            New post
-          </Button>
+          <BsPlusCircle className="newPostButton" onClick={handleShow} />
           <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Create a new post</Modal.Title>
@@ -115,12 +114,11 @@ export default function NewPost() {
             </Modal.Body>
             <Modal.Footer>
               <img src={coffeeman} alt="Man drinking coffee" width="auto" height={100}></img>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
             </Modal.Footer>
-            </Modal>
-            </>
-        );
-
+          </Modal>
+        </>
+      );
 }

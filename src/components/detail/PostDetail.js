@@ -15,7 +15,6 @@ function PostDetails() {
 	const [auth] = useContext(AuthContext);
 
   const { id } = useParams();
-
   const url = BASE_URL + "/social/posts/" + id + "?_author=true&_comments=true&_reactions=true";
 
 	useEffect(function () {
@@ -74,7 +73,7 @@ function PostDetails() {
               <Link to={`/profile/${post.author.name}`}><img src={post.author.avatar} alt={post.author.name} width={100} height={100}></img></Link>
               <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link>
             </>
-        : <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link> 
+        		: <Link to={`/profile/${post.author.name}`}><h3>{post.author.name}</h3></Link> 
         }
 					<h2 className="postTitle">{post.title}</h2>
 				</section>
@@ -108,26 +107,25 @@ function PostDetails() {
 					<h4><BsChat /></h4>
 					<h4>{post._count.comments}</h4>
 				</div>
-					
 					{post.comments && post.comments.map((comment) => {
 						const { owner, body } = comment;
-						return <>
-					<div className="commentsInner">
-						<Link to={`/profile/${owner}`}><h3>{owner}:</h3></Link>
-						<h6 className="commentBody">{body}</h6>
-					</div>
+					return <>
+						<div className="commentsInner">
+							<Link to={`/profile/${owner}`}><h3>{owner}:</h3></Link>
+							<h6 className="commentBody">{body}</h6>
+						</div>
 					</>
-				})}
+					})}
 				</div>
 				<CommentOnPost />
-			<hr />
+				<hr />
 			</section>
 			{post.author.name === auth.name ?
-			<EditPost title={post.title} body={post.body} media={post.media} />
-			: <></>
+				<EditPost title={post.title} body={post.body} media={post.media} />
+				: <></>
 			}
 		</Card>
    );
 }
   
-  export default PostDetails;
+export default PostDetails;

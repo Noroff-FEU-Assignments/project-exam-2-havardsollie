@@ -13,21 +13,21 @@ export default function HomePage() {
     return (
     		<div className="formPage">
           <Card.Img src={logo} alt="Coffeine logo" />
-        <hr />
-        <div className="welcomeText">
-          <h2>Welcome to</h2><h1>Caffeine</h1>
+          <hr />
+          <div className="welcomeText">
+            <h2>Welcome to</h2><h1>Caffeine</h1>
+          </div>
+          <hr />
+          <div className="homeOptions">
+            <Link to="/login"><h2>Login</h2></Link>
+            <h3>or</h3>
+            <Link to="/register"><h2>Register</h2></Link>
+          </div>
         </div>
-        <hr />
-        <div className="homeOptions">
-        <Link to="/login"><h2>Login</h2></Link>
-        <h3>or</h3>
-        <Link to="/register"><h2>Register</h2></Link>
-        </div>
-      </div>
-  )
-  } else {
-    return (
-      <ListOfPosts />
     )
+    } else {
+      return (
+        <ListOfPosts />
+      )
   }
 }

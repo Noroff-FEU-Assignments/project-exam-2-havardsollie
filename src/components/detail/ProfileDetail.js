@@ -19,7 +19,6 @@ function ProfileDetails() {
 	const [auth] = useContext(AuthContext);
 
   let history = useNavigate();
-
   const { name } = useParams();
  
   if (!name) {
@@ -117,35 +116,34 @@ function ProfileDetails() {
 								<img src={follow.avatar} alt={follow.name} width={100} height={100}></img>
 								<h5>{follow.name}</h5>
 							</Link>
-						: <Link to={`/profile/${follow.name}`}><p>{follow.name}</p></Link>
-						}
+							: <Link to={`/profile/${follow.name}`}><p>{follow.name}</p></Link>
+							}
 						</div>
 					))}
-					</div>
-					</div>
-					</Tab>
-				<Tab eventKey="followers" title="Followers" className="tabKey">
-					<div className="followContainer">
+				</div>
+				</div>
+			</Tab>
+			<Tab eventKey="followers" title="Followers" className="tabKey">
+				<div className="followContainer">
 					<h3>Followers: {profile._count.followers}</h3>
-				<div className="followersList">
+					<div className="followersList">
 					{followers && followers.map((follower) => (
 						<div className="follower">
 							{follower.avatar ?
-						<Link to={`/profile/${follower.name}`}>
-							<img src={follower.avatar} alt={follower.name} width={100} height={100}></img>
-							<h5>{follower.name}</h5>
-							</Link>
-						: <Link to={`/profile/${follower.name}`}>
-							<h5>{follower.name}</h5>
-						</Link>	
-						}
+								<Link to={`/profile/${follower.name}`}>
+									<img src={follower.avatar} alt={follower.name} width={100} height={100}></img>
+									<h5>{follower.name}</h5>
+								</Link>
+								: <Link to={`/profile/${follower.name}`}>
+									<h5>{follower.name}</h5>
+									</Link>	
+							}
 						</div>
 					))}
 					</div>
 					</div>
 				</Tab>
       </Tabs>
-			
 			</>
    );
   }

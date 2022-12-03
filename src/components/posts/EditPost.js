@@ -54,7 +54,6 @@ export default function EditPost({ title, body, tags, media }) {
       navigate(`/profile/${auth.name}`);
     }
   }
-
         return (
           <>
           <Button variant="outline-secondary" className="newPost" onClick={handleShow}>
@@ -110,12 +109,12 @@ export default function EditPost({ title, body, tags, media }) {
             </Form>
             </Modal.Body>
             <Modal.Footer>
-            <img src={coffeeman} alt="Man drinking coffee" width="auto" height={100}></img>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
+              <img src={coffeeman} alt="Man drinking coffee" width="auto" height={100}></img>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
             </Modal.Footer>
-            </Modal>
+          </Modal>
             </>
         );
 

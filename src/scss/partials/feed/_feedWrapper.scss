@@ -19,6 +19,16 @@
   }
 }
 
+.newPostButton {
+  display: flex;
+  margin: 0 auto;
+  color: $green;
+  font-size: 40px;
+  &:hover {
+    color: $green-light;
+  }
+}
+
 .feedHeading {
   display: flex;
   align-items: center;

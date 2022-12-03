@@ -15,18 +15,15 @@ function UnfollowButton() {
   const url = BASE_URL + "/social/profiles/" + name + "/unfollow";
   const http = useAxios();
 
-		async function UnfollowThisUser() {
-
-    
-      try {
-        const result = await http.put(url);
-      } catch (error) {
-        setError(error);
-      } finally {
-        window.location.reload();
-      }
-      }
-
+  async function UnfollowThisUser() {
+    try {
+      const result = await http.put(url);
+    } catch (error) {
+      setError(error);
+    } finally {
+      window.location.reload();
+    }
+  }
 
 	if (error) {
 		return <div>An error occurred: {error}</div>;

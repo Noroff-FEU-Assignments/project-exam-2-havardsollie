@@ -21,11 +21,8 @@ export default function ReactToPost() {
   let symbol = emoji;
   const http = useAxios();
   const url = `/social/posts/${id}/react/${symbol}`
-  
-
 
   async function ReactSelect() {
-
     try {
       const response = await http.put(url);
       setEmoji(response);
@@ -35,24 +32,23 @@ export default function ReactToPost() {
       window.location.reload();
     }
   }
-
-        return (
-          <>
+    return (
+      <>
           <Form onSubmit={handleSubmit(ReactSelect)} className="reactForm">
-                  <select
-                  value={emoji}
-                  {...register("title")}
-                  className="reactionSelect"
-                  onChange={(e) => setEmoji(e.target.value)}
-                  >
-                    <option value="">Emoji</option>
-                    <option>😃</option>
-                    <option>❤️</option>
-                    <option>👍</option>
-                  </select>
-                <button>Send</button>
-            </Form>
-            </>
-        );
+            <select
+              value={emoji}
+              {...register("title")}
+              className="reactionSelect"
+              onChange={(e) => setEmoji(e.target.value)}
+              >
+              <option value="">Emoji</option>
+              <option>😃</option>
+              <option>❤️</option>
+              <option>👍</option>
+            </select>
+          <button>Send</button>
+      </Form>
+    </>
+);
 
 }
